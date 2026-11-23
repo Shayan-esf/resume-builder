@@ -38,7 +38,7 @@ export const DEFAULT_CURATED_SKILLS: CuratedSkillRow[] = [
     ],
   },
   {
-    category: "Technical Architecture",
+    category: "Languages & Frameworks",
     visibleItems: [
       "Custom AI Agent & Skills",
       "TypeScript",
@@ -150,7 +150,6 @@ export const SUPPLEMENTARY_ATS_KEYWORDS: string[] = [
   "Value Propositions",
   "Project Management",
   "Objectives and Key Results",
-  "OKR",
   "Agile",
   "Scrum",
   "Problem Solving",

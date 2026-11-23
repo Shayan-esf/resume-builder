@@ -25,6 +25,7 @@ import { CLONE_STATUS_META, getCloneGroupMeta } from "@/types/clones";
 import { getFontPairing, sanitizeCustomCss } from "@/utils/templateTheme";
 import { matchClickedElementToField } from "@/utils/resumeFieldMatcher";
 import { exportResumeToDocx } from "@/utils/docxExporter";
+import { drawPdfTextLayer } from "@/utils/pdfTextLayer";
 import {
   Archive,
   Award,
@@ -52,36 +53,41 @@ const A4_W = 794; // A4 width at 96 DPI (px)
 const DOC_W = 594; // Figma design native width (px)
 const DEFAULT_DOC_H = 1100; // Baseline natural height without empty void (px)
 
-// Characters that ATS text extractors frequently mis-read are downgraded to plain ASCII,
-// so the hidden PDF text layer never contains mojibake (e.g. box glyphs) or dangling symbols.
-const PDF_TEXT_REPLACEMENTS: Record<string, string> = {
-  "\u2014": "-",
-  "\u2013": "-",
-  "\u2012": "-",
-  "\u2011": "-",
-  "\u2022": "|",
-  "\u00b7": "|",
-  "\u2023": "|",
-  "\u25aa": "|",
-  "\u25cf": "|",
-  "\u2192": "->",
-  "\u2026": "...",
-  "\u2019": "'",
-  "\u2018": "'",
-  "\u201c": '"',
-  "\u201d": '"',
-  "\u00a0": " ",
-  "\u200b": "",
-  "\u200e": "",
-  "\u200f": "",
-  "\ufeff": "",
-};
+/**
+ * Adds clickable link annotations for every <a href> inside a rendered resume sheet.
+ * `pageIndex` pins the annotation to one page (fixed-page templates); when omitted the
+ * page is derived from the link's vertical position in a tall multi-page sheet.
+ */
+function addPdfLinkAnnotations(
+  pdf: jsPDF,
+  root: HTMLElement,
+  origin: DOMRect,
+  scaleX: number,
+  scaleY: number,
+  opts: { pageIndex?: number; pageCount: number; pageHeightMm: number }
+): void {
+  const linkElements = root.querySelectorAll<HTMLAnchorElement>("a[href]");
+  linkElements.forEach((linkEl) => {
+    const href = linkEl.getAttribute("href");
+    if (!href || href.startsWith("#") || href.startsWith("javascript:")) return;
 
-function toPdfSafeText(value: string): string {
-  return value
-    .replace(/[^\x20-\x7E]/g, (ch) => PDF_TEXT_REPLACEMENTS[ch] ?? "")
-    .replace(/\s{2,}/g, " ")
-    .trim();
+    const rect = linkEl.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) return;
+
+    const x = (rect.left - origin.left) * scaleX;
+    const y = (rect.top - origin.top) * scaleY;
+    const w = rect.width * scaleX;
+    const h = rect.height * scaleY;
+
+    const page = opts.pageIndex ?? Math.floor(y / opts.pageHeightMm) + 1;
+    if (page < 1 || page > opts.pageCount) return;
+
+    const yOnPage = opts.pageIndex !== undefined ? y : y - (page - 1) * opts.pageHeightMm;
+    if (yOnPage < 0 || yOnPage > opts.pageHeightMm) return;
+
+    pdf.setPage(page);
+    pdf.link(x, yOnPage, w, h, { url: href });
+  });
 }
 
 /**
@@ -337,33 +343,22 @@ export default function ResumeApp() {
 
     const draftSlug = getDraftFileSlug();
     const tplSlug = getTemplateFileSlug();
+    const pageW = 210;
+    const pageH = 297;
+    const fileSuffix = compressed ? "_Compressed" : "";
+
     setIsDownloading(true);
+    const originalTransform = element.style.transform;
+    element.style.transform = "none";
+
     try {
-      const originalTransform = element.style.transform;
-      element.style.transform = "none";
-
-      let dataUrl: string;
-      let imgFormat: "PNG" | "JPEG" = "PNG";
-
-      if (compressed) {
-        imgFormat = "JPEG";
-        dataUrl = await renderSheetImage(element, true);
-      } else {
-        imgFormat = "PNG";
-        dataUrl = await renderSheetImage(element, false);
-      }
-
-      element.style.transform = originalTransform;
-
-      const pdfWidth = 210; // 210mm standard width
-      const elementWidth = element.offsetWidth || 594;
-      const elementHeight = element.offsetHeight || 842;
-      const imgHeight = (pdfWidth * elementHeight) / elementWidth;
-
       if (liveBaseType === "executive-ats-2page") {
         // Precise 2-page A4 generation for Executive template
-        const page1El = document.getElementById("page-1");
-        const page2El = document.getElementById("page-2");
+        const pageElements = [
+          document.getElementById("page-1"),
+          document.getElementById("page-2"),
+        ].filter((el): el is HTMLElement => Boolean(el));
+
         const pdf = new jsPDF({
           orientation: "portrait",
           unit: "mm",
@@ -371,121 +366,40 @@ export default function ResumeApp() {
           compress: true,
         });
 
-        const pages = [page1El, page2El].filter(Boolean) as HTMLElement[];
-
-        for (let pIdx = 0; pIdx < pages.length; pIdx++) {
+        for (let pIdx = 0; pIdx < pageElements.length; pIdx++) {
           if (pIdx > 0) pdf.addPage();
-          const pEl = pages[pIdx];
+          const pageEl = pageElements[pIdx];
 
-          const pDataUrl = await renderSheetImage(pEl, compressed);
+          const pDataUrl = await renderSheetImage(pageEl, compressed);
+          pdf.addImage(pDataUrl, compressed ? "JPEG" : "PNG", 0, 0, pageW, pageH, undefined, compressed ? "FAST" : "SLOW");
 
-          pdf.addImage(pDataUrl, compressed ? "JPEG" : "PNG", 0, 0, 210, 297, undefined, compressed ? "FAST" : "SLOW");
-
-          const pRect = pEl.getBoundingClientRect();
+          const pRect = pageEl.getBoundingClientRect();
           if (pRect.width > 0 && pRect.height > 0) {
-            const pScaleX = 210 / pRect.width;
-            const pScaleY = 297 / pRect.height;
+            const pScaleX = pageW / pRect.width;
+            const pScaleY = pageH / pRect.height;
 
-            // Searchable text overlay
             try {
-              const walker = document.createTreeWalker(pEl, NodeFilter.SHOW_TEXT, {
-                acceptNode: (node) => {
-                  if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-                  const parent = node.parentElement;
-                  if (!parent) return NodeFilter.FILTER_REJECT;
-                  const tag = parent.tagName.toLowerCase();
-                  if (tag === "script" || tag === "style" || tag === "svg" || tag === "path") return NodeFilter.FILTER_REJECT;
-                  const style = window.getComputedStyle(parent);
-                  if (style.display === "none" || style.visibility === "hidden" || style.opacity === "0") {
-                    return NodeFilter.FILTER_REJECT;
-                  }
-                  return NodeFilter.FILTER_ACCEPT;
-                },
+              drawPdfTextLayer(pdf, pageEl, {
+                pageIndex: pIdx + 1,
+                pageCount: pageElements.length,
+                pageWidthMm: pageW,
+                pageHeightMm: pageH,
+                scaleX: pScaleX,
+                scaleY: pScaleY,
               });
-
-              const range = document.createRange();
-              const textItems: { text: string; rect: DOMRect; fontPx: number }[] = [];
-
-              while (walker.nextNode()) {
-                const textNode = walker.currentNode as Text;
-                const text = toPdfSafeText(textNode.nodeValue ?? "");
-                if (!text) continue;
-                const parent = textNode.parentElement;
-                if (!parent) continue;
-
-                const style = window.getComputedStyle(parent);
-                const fontPx = parseFloat(style.fontSize) || 12;
-
-                range.selectNodeContents(textNode);
-                const rects = Array.from(range.getClientRects());
-
-                if (rects.length <= 1) {
-                  if (rects.length === 1 && rects[0].width > 0 && rects[0].height > 0) {
-                    textItems.push({ text, rect: rects[0], fontPx });
-                  }
-                } else {
-                  const tokens = text.split(/(\s+)/);
-                  let charOffset = 0;
-                  for (const token of tokens) {
-                    if (token.trim().length > 0) {
-                      try {
-                        const wordRange = document.createRange();
-                        wordRange.setStart(textNode, charOffset);
-                        wordRange.setEnd(textNode, charOffset + token.length);
-                        const wRect = wordRange.getBoundingClientRect();
-                        if (wRect.width > 0 && wRect.height > 0) {
-                          textItems.push({ text: token, rect: wRect, fontPx });
-                        }
-                      } catch {
-                        // fallback
-                      }
-                    }
-                    charOffset += token.length;
-                  }
-                }
-              }
-
-              if (textItems.length > 0) {
-                textItems.forEach(({ text: itemText, rect: r, fontPx }) => {
-                  const x = (r.left - pRect.left) * pScaleX;
-                  const y = (r.top - pRect.top) * pScaleY;
-                  const h = r.height * pScaleY;
-                  const baselineY = y + h * 0.82;
-                  const fontPt = Math.max(3, fontPx * pScaleY * (72 / 25.4));
-
-                  pdf.setTextColor(255, 255, 255);
-                pdf.setFontSize(fontPt);
-                  pdf.text(itemText, x, baselineY, { renderingMode: "invisible" });
-                });
-              }
             } catch (err) {
               console.warn("Text overlay generation failed: ", err);
             }
 
-            // Clickable links
-            const linkElements = pEl.querySelectorAll<HTMLAnchorElement>("a[href]");
-            linkElements.forEach((linkEl) => {
-              const href = linkEl.getAttribute("href");
-              if (!href || href.startsWith("#") || href.startsWith("javascript:")) return;
-
-              const rect = linkEl.getBoundingClientRect();
-              if (rect.width === 0 || rect.height === 0) return;
-
-              const x = (rect.left - pRect.left) * pScaleX;
-              const y = (rect.top - pRect.top) * pScaleY;
-              const w = rect.width * pScaleX;
-              const h = rect.height * pScaleY;
-
-              pdf.link(x, y, w, h, { url: href });
+            addPdfLinkAnnotations(pdf, pageEl, pRect, pScaleX, pScaleY, {
+              pageIndex: pIdx + 1,
+              pageCount: pageElements.length,
+              pageHeightMm: pageH,
             });
           }
         }
 
-        pdf.save(
-          compressed
-            ? `Shayan_Esfahanizadeh_Resume${draftSlug}${tplSlug}_Compressed.pdf`
-            : `Shayan_Esfahanizadeh_Resume${draftSlug}${tplSlug}.pdf`
-        );
+        pdf.save(`Shayan_Esfahanizadeh_Resume${draftSlug}${tplSlug}${fileSuffix}.pdf`);
       } else if (liveBaseType === "minimal-ats") {
         // Strict single-page A4 generation for Classic ATS 1-Page template (never overflows to page 2)
         const pdf = new jsPDF({
@@ -495,9 +409,8 @@ export default function ResumeApp() {
           compress: true,
         });
 
-        const pageW = 210;
-        const pageH = 297;
-        pdf.addImage(dataUrl, imgFormat, 0, 0, pageW, pageH, undefined, compressed ? "FAST" : "SLOW");
+        const dataUrl = await renderSheetImage(element, compressed);
+        pdf.addImage(dataUrl, compressed ? "JPEG" : "PNG", 0, 0, pageW, pageH, undefined, compressed ? "FAST" : "SLOW");
 
         const elementRect = element.getBoundingClientRect();
         if (elementRect.width > 0 && elementRect.height > 0) {
@@ -505,106 +418,26 @@ export default function ResumeApp() {
           const scaleY = pageH / elementRect.height;
 
           try {
-            const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
-              acceptNode: (node) => {
-                if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-                const parent = node.parentElement;
-                if (!parent) return NodeFilter.FILTER_REJECT;
-                const tag = parent.tagName.toLowerCase();
-                if (tag === "script" || tag === "style" || tag === "svg" || tag === "path") return NodeFilter.FILTER_REJECT;
-                const style = window.getComputedStyle(parent);
-                if (style.display === "none" || style.visibility === "hidden" || style.opacity === "0") {
-                  return NodeFilter.FILTER_REJECT;
-                }
-                return NodeFilter.FILTER_ACCEPT;
-              },
+            drawPdfTextLayer(pdf, element, {
+              pageIndex: 1,
+              pageCount: 1,
+              pageWidthMm: pageW,
+              pageHeightMm: pageH,
+              scaleX,
+              scaleY,
             });
-
-            const range = document.createRange();
-            const textItems: { text: string; rect: DOMRect; fontPx: number }[] = [];
-
-            while (walker.nextNode()) {
-              const textNode = walker.currentNode as Text;
-              const text = toPdfSafeText(textNode.nodeValue ?? "");
-              if (!text) continue;
-
-              const parent = textNode.parentElement;
-              if (!parent) continue;
-
-              const style = window.getComputedStyle(parent);
-              const fontPx = parseFloat(style.fontSize) || 11;
-
-              range.selectNodeContents(textNode);
-              const rects = Array.from(range.getClientRects());
-
-              if (rects.length <= 1) {
-                if (rects.length === 1 && rects[0].width > 0 && rects[0].height > 0) {
-                  textItems.push({ text, rect: rects[0], fontPx });
-                }
-              } else {
-                const tokens = text.split(/(\s+)/);
-                let charOffset = 0;
-                for (const token of tokens) {
-                  if (token.trim().length > 0) {
-                    try {
-                      const wordRange = document.createRange();
-                      wordRange.setStart(textNode, charOffset);
-                      wordRange.setEnd(textNode, charOffset + token.length);
-                      const wRect = wordRange.getBoundingClientRect();
-                      if (wRect.width > 0 && wRect.height > 0) {
-                        textItems.push({ text: token, rect: wRect, fontPx });
-                      }
-                    } catch {
-                      // fallback
-                    }
-                  }
-                  charOffset += token.length;
-                }
-              }
-            }
-
-            if (textItems.length > 0) {
-              textItems.forEach(({ text: itemText, rect, fontPx }) => {
-                const x = (rect.left - elementRect.left) * scaleX;
-                const y = (rect.top - elementRect.top) * scaleY;
-                const h = rect.height * scaleY;
-                const baselineY = y + h * 0.82;
-                if (baselineY <= pageH) {
-                  const fontPt = Math.max(3, fontPx * scaleY * (72 / 25.4));
-                  pdf.setTextColor(255, 255, 255);
-                pdf.setFontSize(fontPt);
-                  pdf.text(itemText, x, baselineY, { renderingMode: "invisible" });
-                }
-              });
-            }
           } catch (err) {
             console.warn("Text overlay generation failed: ", err);
           }
 
-          const linkElements = element.querySelectorAll<HTMLAnchorElement>("a[href]");
-          linkElements.forEach((linkEl) => {
-            const href = linkEl.getAttribute("href");
-            if (!href || href.startsWith("#") || href.startsWith("javascript:")) return;
-
-            const rect = linkEl.getBoundingClientRect();
-            if (rect.width === 0 || rect.height === 0) return;
-
-            const x = (rect.left - elementRect.left) * scaleX;
-            const y = (rect.top - elementRect.top) * scaleY;
-            const w = rect.width * scaleX;
-            const h = rect.height * scaleY;
-
-            if (y < pageH) {
-              pdf.link(x, y, w, h, { url: href });
-            }
+          addPdfLinkAnnotations(pdf, element, elementRect, scaleX, scaleY, {
+            pageIndex: 1,
+            pageCount: 1,
+            pageHeightMm: pageH,
           });
         }
 
-        pdf.save(
-          compressed
-            ? `Shayan_Esfahanizadeh_Resume${draftSlug}${tplSlug}_1Page_Compressed.pdf`
-            : `Shayan_Esfahanizadeh_Resume${draftSlug}${tplSlug}_1Page.pdf`
-        );
+        pdf.save(`Shayan_Esfahanizadeh_Resume${draftSlug}${tplSlug}_1Page${fileSuffix}.pdf`);
       } else {
         // Standard multi-page A4 format for custom HTML templates
         const pdf = new jsPDF({
@@ -614,139 +447,51 @@ export default function ResumeApp() {
           compress: true,
         });
 
-        const pdfHeight = pdf.internal.pageSize.getHeight(); // 297mm
-        let heightLeft = imgHeight;
+        const dataUrl = await renderSheetImage(element, compressed);
+        const elementWidth = element.offsetWidth || 594;
+        const elementHeight = element.offsetHeight || 842;
+        const imgHeight = (pageW * elementHeight) / elementWidth;
+
+        pdf.addImage(dataUrl, compressed ? "JPEG" : "PNG", 0, 0, pageW, imgHeight, undefined, compressed ? "FAST" : "SLOW");
+        let heightLeft = imgHeight - pageH;
         let position = 0;
 
-        pdf.addImage(dataUrl, imgFormat, 0, position, pdfWidth, imgHeight, undefined, compressed ? "FAST" : "SLOW");
-        heightLeft -= pdfHeight;
-
         while (heightLeft > 15) {
-          position -= pdfHeight;
+          position -= pageH;
           pdf.addPage();
-          pdf.addImage(dataUrl, imgFormat, 0, position, pdfWidth, imgHeight, undefined, compressed ? "FAST" : "SLOW");
-          heightLeft -= pdfHeight;
+          pdf.addImage(dataUrl, compressed ? "JPEG" : "PNG", 0, position, pageW, imgHeight, undefined, compressed ? "FAST" : "SLOW");
+          heightLeft -= pageH;
         }
 
+        const pageCount = (pdf.internal as any).getNumberOfPages();
         const elementRect = element.getBoundingClientRect();
         if (elementRect.width > 0 && elementRect.height > 0) {
-          const scaleX = pdfWidth / elementRect.width;
+          const scaleX = pageW / elementRect.width;
           const scaleY = imgHeight / elementRect.height;
 
-          // Add searchable & selectable invisible text layer
+          // Searchable & selectable text layer, emitted line by line in reading order
           try {
-            const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
-              acceptNode: (node) => {
-                if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-                const parent = node.parentElement;
-                if (!parent) return NodeFilter.FILTER_REJECT;
-                const tag = parent.tagName.toLowerCase();
-                if (tag === "script" || tag === "style" || tag === "svg" || tag === "path") return NodeFilter.FILTER_REJECT;
-                const style = window.getComputedStyle(parent);
-                if (style.display === "none" || style.visibility === "hidden" || style.opacity === "0") {
-                  return NodeFilter.FILTER_REJECT;
-                }
-                return NodeFilter.FILTER_ACCEPT;
-              },
+            drawPdfTextLayer(pdf, element, {
+              pageCount,
+              pageWidthMm: pageW,
+              pageHeightMm: pageH,
+              scaleX,
+              scaleY,
             });
-
-            const range = document.createRange();
-            const textItems: { text: string; rect: DOMRect; fontPx: number }[] = [];
-
-            while (walker.nextNode()) {
-              const textNode = walker.currentNode as Text;
-              const text = toPdfSafeText(textNode.nodeValue ?? "");
-              if (!text) continue;
-
-              const parent = textNode.parentElement;
-              if (!parent) continue;
-
-              const style = window.getComputedStyle(parent);
-              const fontPx = parseFloat(style.fontSize) || 12;
-
-              range.selectNodeContents(textNode);
-              const rects = Array.from(range.getClientRects());
-
-              if (rects.length <= 1) {
-                if (rects.length === 1 && rects[0].width > 0 && rects[0].height > 0) {
-                  textItems.push({ text, rect: rects[0], fontPx });
-                }
-              } else {
-                const tokens = text.split(/(\s+)/);
-                let charOffset = 0;
-                for (const token of tokens) {
-                  if (token.trim().length > 0) {
-                    try {
-                      const wordRange = document.createRange();
-                      wordRange.setStart(textNode, charOffset);
-                      wordRange.setEnd(textNode, charOffset + token.length);
-                      const wRect = wordRange.getBoundingClientRect();
-                      if (wRect.width > 0 && wRect.height > 0) {
-                        textItems.push({ text: token, rect: wRect, fontPx });
-                      }
-                    } catch {
-                      // fallback
-                    }
-                  }
-                  charOffset += token.length;
-                }
-              }
-            }
-
-            if (textItems.length > 0) {
-              const totalPages = (pdf.internal as any).getNumberOfPages();
-              textItems.forEach(({ text: itemText, rect, fontPx }) => {
-                const x = (rect.left - elementRect.left) * scaleX;
-                const y = (rect.top - elementRect.top) * scaleY;
-                const h = rect.height * scaleY;
-                const baselineY = y + h * 0.82;
-                const fontPt = Math.max(3, fontPx * scaleY * (72 / 25.4));
-
-                const pageIndex = Math.floor(baselineY / pdfHeight);
-                const yOnPage = baselineY % pdfHeight;
-                if (pageIndex + 1 <= totalPages) {
-                  pdf.setPage(pageIndex + 1);
-                  pdf.setTextColor(255, 255, 255);
-                pdf.setFontSize(fontPt);
-                  pdf.text(itemText, x, yOnPage, { renderingMode: "invisible" });
-                }
-              });
-            }
           } catch (err) {
             console.warn("Text overlay generation failed: ", err);
           }
 
-          // Add clickable PDF link annotations for multi-page
-          const linkElements = element.querySelectorAll<HTMLAnchorElement>("a[href]");
-          linkElements.forEach((linkEl) => {
-            const href = linkEl.getAttribute("href");
-            if (!href || href.startsWith("#") || href.startsWith("javascript:")) return;
-
-            const rect = linkEl.getBoundingClientRect();
-            if (rect.width === 0 || rect.height === 0) return;
-
-            const x = (rect.left - elementRect.left) * scaleX;
-            const y = (rect.top - elementRect.top) * scaleY;
-            const w = rect.width * scaleX;
-            const h = rect.height * scaleY;
-
-            const pageIndex = Math.floor(y / pdfHeight);
-            const yOnPage = y % pdfHeight;
-            const totalPages = (pdf.internal as any).getNumberOfPages();
-            if (pageIndex + 1 <= totalPages) {
-              pdf.setPage(pageIndex + 1);
-              pdf.link(x, yOnPage, w, h, { url: href });
-            }
+          addPdfLinkAnnotations(pdf, element, elementRect, scaleX, scaleY, {
+            pageCount,
+            pageHeightMm: pageH,
           });
         }
 
-        pdf.save(
-          compressed
-            ? `Shayan_Esfahanizadeh_Resume${draftSlug}${tplSlug}_Compressed.pdf`
-            : `Shayan_Esfahanizadeh_Resume${draftSlug}${tplSlug}.pdf`
-        );
+        pdf.save(`Shayan_Esfahanizadeh_Resume${draftSlug}${tplSlug}${fileSuffix}.pdf`);
       }
-    } catch {
+    } catch (err) {
+      console.warn("PDF export failed, downloading the pre-rendered file instead", err);
       // Fallback cleanly to downloading the pre-rendered vector PDF file
       const link = document.createElement("a");
       link.href = "/Shayan_Resume.pdf";
@@ -755,6 +500,7 @@ export default function ResumeApp() {
       link.click();
       document.body.removeChild(link);
     } finally {
+      element.style.transform = originalTransform;
       setIsDownloading(false);
     }
   };

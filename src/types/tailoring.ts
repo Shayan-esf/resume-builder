@@ -124,7 +124,7 @@ export const MASTER_RESUME_CONTENT: TailoredResumeContent = {
       ],
     },
     {
-      category: "Technical Architecture",
+      category: "Languages & Frameworks",
       items: [
         "Custom AI Agent & Skills",
         "TypeScript",
@@ -194,7 +194,7 @@ export const MASTER_RESUME_CONTENT: TailoredResumeContent = {
         "**Segmentation, Use-Case Expansion & Organic Growth —** Expanded daily usability and impact by reframing the same user beyond basic **self-care** into **Health Companion** and **organizational wellness** scenarios; separated buyer and end-user personas to cut low-value cohorts, while building **UGC sharing mechanisms** and **peer-to-peer competitive challenges** to drive organic referrals and **brand awareness**.",
         "**Discovery-Driven Product Spin-offs —** Identified two distinct market needs during product discovery; prevented core-product feature bloat by securing management approval to spin them off into two independent, persona-specific products (**Rokhnama** and **BioPad**), then built both end-to-end with **AI as a Product Builder** through to active user acquisition and fundraising.",
       ],
-      tags: ["React", "Product Strategy", "Product Discovery", "GTM", "OKR", "Agile/Scrum", "Prototyping"],
+      tags: ["React", "Product Strategy", "Product Discovery", "GTM", "OKRs", "Agile/Scrum", "Prototyping"],
     },
     {
       id: "uxcel",
