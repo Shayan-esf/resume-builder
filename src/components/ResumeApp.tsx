@@ -360,123 +360,7 @@ export default function ResumeApp() {
       const elementHeight = element.offsetHeight || 842;
       const imgHeight = (pdfWidth * elementHeight) / elementWidth;
 
-      // For Modern UI (modern-figma) template: generate a single continuous long page PDF
-      if (liveBaseType === "modern-figma") {
-        const pdf = new jsPDF({
-          orientation: "portrait",
-          unit: "mm",
-          format: [pdfWidth, imgHeight],
-          compress: true,
-        });
-
-        pdf.addImage(dataUrl, imgFormat, 0, 0, pdfWidth, imgHeight, undefined, compressed ? "FAST" : "NONE");
-
-        const elementRect = element.getBoundingClientRect();
-        if (elementRect.width > 0 && elementRect.height > 0) {
-          const scaleX = pdfWidth / elementRect.width;
-          const scaleY = imgHeight / elementRect.height;
-
-          // Add searchable & selectable invisible text layer
-          try {
-            const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
-              acceptNode: (node) => {
-                if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-                const parent = node.parentElement;
-                if (!parent) return NodeFilter.FILTER_REJECT;
-                const tag = parent.tagName.toLowerCase();
-                if (tag === "script" || tag === "style" || tag === "svg" || tag === "path") return NodeFilter.FILTER_REJECT;
-                const style = window.getComputedStyle(parent);
-                if (style.display === "none" || style.visibility === "hidden" || style.opacity === "0") {
-                  return NodeFilter.FILTER_REJECT;
-                }
-                return NodeFilter.FILTER_ACCEPT;
-              },
-            });
-
-            const range = document.createRange();
-            const textItems: { text: string; rect: DOMRect; fontPx: number }[] = [];
-
-            while (walker.nextNode()) {
-              const textNode = walker.currentNode as Text;
-              const text = toPdfSafeText(textNode.nodeValue ?? "");
-              if (!text) continue;
-
-              const parent = textNode.parentElement;
-              if (!parent) continue;
-
-              const style = window.getComputedStyle(parent);
-              const fontPx = parseFloat(style.fontSize) || 12;
-
-              range.selectNodeContents(textNode);
-              const rects = Array.from(range.getClientRects());
-
-              if (rects.length <= 1) {
-                if (rects.length === 1 && rects[0].width > 0 && rects[0].height > 0) {
-                  textItems.push({ text, rect: rects[0], fontPx });
-                }
-              } else {
-                const tokens = text.split(/(\s+)/);
-                let charOffset = 0;
-                for (const token of tokens) {
-                  if (token.trim().length > 0) {
-                    try {
-                      const wordRange = document.createRange();
-                      wordRange.setStart(textNode, charOffset);
-                      wordRange.setEnd(textNode, charOffset + token.length);
-                      const wRect = wordRange.getBoundingClientRect();
-                      if (wRect.width > 0 && wRect.height > 0) {
-                        textItems.push({ text: token, rect: wRect, fontPx });
-                      }
-                    } catch {
-                      // fallback
-                    }
-                  }
-                  charOffset += token.length;
-                }
-              }
-            }
-
-            if (textItems.length > 0) {
-              textItems.forEach(({ text: itemText, rect, fontPx }) => {
-                const x = (rect.left - elementRect.left) * scaleX;
-                const y = (rect.top - elementRect.top) * scaleY;
-                const h = rect.height * scaleY;
-                const baselineY = y + h * 0.82;
-                const fontPt = Math.max(3, fontPx * scaleY * (72 / 25.4));
-
-                pdf.setTextColor(255, 255, 255);
-                pdf.setFontSize(fontPt);
-                pdf.text(itemText, x, baselineY, { renderingMode: "invisible" });
-              });
-            }
-          } catch (err) {
-            console.warn("Text overlay generation failed: ", err);
-          }
-
-          // Add clickable PDF link annotations
-          const linkElements = element.querySelectorAll<HTMLAnchorElement>("a[href]");
-          linkElements.forEach((linkEl) => {
-            const href = linkEl.getAttribute("href");
-            if (!href || href.startsWith("#") || href.startsWith("javascript:")) return;
-
-            const rect = linkEl.getBoundingClientRect();
-            if (rect.width === 0 || rect.height === 0) return;
-
-            const x = (rect.left - elementRect.left) * scaleX;
-            const y = (rect.top - elementRect.top) * scaleY;
-            const w = rect.width * scaleX;
-            const h = rect.height * scaleY;
-
-            pdf.link(x, y, w, h, { url: href });
-          });
-        }
-
-        pdf.save(
-          compressed
-            ? `Shayan_Esfahanizadeh_Resume${draftSlug}${tplSlug}_Compressed.pdf`
-            : `Shayan_Esfahanizadeh_Resume${draftSlug}${tplSlug}.pdf`
-        );
-      } else if (liveBaseType === "executive-ats-2page") {
+      if (liveBaseType === "executive-ats-2page") {
         // Precise 2-page A4 generation for Executive template
         const page1El = document.getElementById("page-1");
         const page2El = document.getElementById("page-2");
@@ -495,7 +379,7 @@ export default function ResumeApp() {
 
           const pDataUrl = await renderSheetImage(pEl, compressed);
 
-          pdf.addImage(pDataUrl, compressed ? "JPEG" : "PNG", 0, 0, 210, 297, undefined, compressed ? "FAST" : "NONE");
+          pdf.addImage(pDataUrl, compressed ? "JPEG" : "PNG", 0, 0, 210, 297, undefined, compressed ? "FAST" : "SLOW");
 
           const pRect = pEl.getBoundingClientRect();
           if (pRect.width > 0 && pRect.height > 0) {
@@ -613,7 +497,7 @@ export default function ResumeApp() {
 
         const pageW = 210;
         const pageH = 297;
-        pdf.addImage(dataUrl, imgFormat, 0, 0, pageW, pageH, undefined, compressed ? "FAST" : "NONE");
+        pdf.addImage(dataUrl, imgFormat, 0, 0, pageW, pageH, undefined, compressed ? "FAST" : "SLOW");
 
         const elementRect = element.getBoundingClientRect();
         if (elementRect.width > 0 && elementRect.height > 0) {
@@ -734,13 +618,13 @@ export default function ResumeApp() {
         let heightLeft = imgHeight;
         let position = 0;
 
-        pdf.addImage(dataUrl, imgFormat, 0, position, pdfWidth, imgHeight, undefined, compressed ? "FAST" : "NONE");
+        pdf.addImage(dataUrl, imgFormat, 0, position, pdfWidth, imgHeight, undefined, compressed ? "FAST" : "SLOW");
         heightLeft -= pdfHeight;
 
         while (heightLeft > 15) {
           position -= pdfHeight;
           pdf.addPage();
-          pdf.addImage(dataUrl, imgFormat, 0, position, pdfWidth, imgHeight, undefined, compressed ? "FAST" : "NONE");
+          pdf.addImage(dataUrl, imgFormat, 0, position, pdfWidth, imgHeight, undefined, compressed ? "FAST" : "SLOW");
           heightLeft -= pdfHeight;
         }
 

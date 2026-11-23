@@ -1,0 +1,347 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/ATSInspectorModal.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=b5f0ee11"; const Fragment = __vite__cjsImport0_react_jsxDevRuntime["Fragment"]; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+var _s = $RefreshSig$();
+import __vite__cjsImport1_react from "/node_modules/.vite/deps/react.js?v=b5f0ee11"; const useState = __vite__cjsImport1_react["useState"];
+import { Check, Copy, Download, FileText, Search, ShieldCheck, X } from "/node_modules/.vite/deps/lucide-react.js?v=b5f0ee11";
+export default function ATSInspectorModal({
+  isOpen,
+  onClose,
+  extractedText,
+  searchTerm,
+  onSearchChange,
+  matchCount
+}) {
+  _s();
+  const [copied, setCopied] = useState(false);
+  if (!isOpen) return null;
+  const handleCopy = () => {
+    navigator.clipboard.writeText(extractedText);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2e3);
+  };
+  const handleDownloadTxt = () => {
+    const element = document.createElement("a");
+    const file = new Blob([extractedText], { type: "text/plain;charset=utf-8" });
+    element.href = URL.createObjectURL(file);
+    element.download = "Shayan-Esfahanizadeh-Resume-ATS.txt";
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  };
+  const words = extractedText.trim().split(/\s+/).filter(Boolean);
+  const wordCount = words.length;
+  return /* @__PURE__ */ jsxDEV(
+    "div",
+    {
+      className: "fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs no-print",
+      onClick: onClose,
+      children: /* @__PURE__ */ jsxDEV(
+        "div",
+        {
+          className: "w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[85vh] animate-in fade-in zoom-in-95 duration-150",
+          onClick: (e) => e.stopPropagation(),
+          dir: "rtl",
+          children: [
+            /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/80 shrink-0", children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-2.5", children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "p-2 rounded-xl bg-emerald-100 text-emerald-700", children: /* @__PURE__ */ jsxDEV(ShieldCheck, { className: "size-5" }, void 0, false, {
+                  fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                  lineNumber: 58,
+                  columnNumber: 15
+                }, this) }, void 0, false, {
+                  fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                  lineNumber: 57,
+                  columnNumber: 13
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { children: [
+                  /* @__PURE__ */ jsxDEV("h3", { className: "font-semibold text-slate-800 text-base flex items-center gap-2", children: [
+                    /* @__PURE__ */ jsxDEV("span", { children: "تست خوانایی و اسکن ATS (Text Inspector)" }, void 0, false, {
+                      fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                      lineNumber: 62,
+                      columnNumber: 17
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("span", { className: "text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 font-medium", children: "۱۰۰٪ قابل اسکن و سلکت" }, void 0, false, {
+                      fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                      lineNumber: 63,
+                      columnNumber: 17
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                    lineNumber: 61,
+                    columnNumber: 15
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-slate-500", children: "مشاهده مستقیم متن استخراج‌شده توسط موتورهای ATS و اطمینان از خوانا بودن تمام بخش‌ها" }, void 0, false, {
+                    fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                    lineNumber: 67,
+                    columnNumber: 15
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                  lineNumber: 60,
+                  columnNumber: 13
+                }, this)
+              ] }, void 0, true, {
+                fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                lineNumber: 56,
+                columnNumber: 11
+              }, this),
+              /* @__PURE__ */ jsxDEV(
+                "button",
+                {
+                  onClick: onClose,
+                  className: "p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors",
+                  title: "بستن",
+                  children: /* @__PURE__ */ jsxDEV(X, { className: "size-4" }, void 0, false, {
+                    fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                    lineNumber: 77,
+                    columnNumber: 13
+                  }, this)
+                },
+                void 0,
+                false,
+                {
+                  fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                  lineNumber: 72,
+                  columnNumber: 11
+                },
+                this
+              )
+            ] }, void 0, true, {
+              fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+              lineNumber: 55,
+              columnNumber: 9
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "p-4 border-b border-slate-100 bg-white flex flex-wrap items-center justify-between gap-3 shrink-0", children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-3 text-xs text-slate-600", children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 font-medium", children: [
+                  /* @__PURE__ */ jsxDEV(FileText, { className: "size-3.5 text-slate-500" }, void 0, false, {
+                    fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                    lineNumber: 86,
+                    columnNumber: 15
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("span", { children: [
+                    wordCount,
+                    " کلمه استخراج‌شده"
+                  ] }, void 0, true, {
+                    fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                    lineNumber: 87,
+                    columnNumber: 15
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                  lineNumber: 85,
+                  columnNumber: 13
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 font-medium", children: [
+                  /* @__PURE__ */ jsxDEV(ShieldCheck, { className: "size-3.5" }, void 0, false, {
+                    fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                    lineNumber: 90,
+                    columnNumber: 15
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("span", { children: "بدون متن پنهان / فاقد تصاویر رستریِ متنی" }, void 0, false, {
+                    fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                    lineNumber: 91,
+                    columnNumber: 15
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                  lineNumber: 89,
+                  columnNumber: 13
+                }, this)
+              ] }, void 0, true, {
+                fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                lineNumber: 84,
+                columnNumber: 11
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "relative flex-1 min-w-[200px] max-w-xs", children: [
+                /* @__PURE__ */ jsxDEV(
+                  "input",
+                  {
+                    type: "text",
+                    placeholder: "جستجو در متن رزومه (کلیدواژه‌ها)...",
+                    value: searchTerm,
+                    onChange: (e) => onSearchChange(e.target.value),
+                    className: "w-full pl-8 pr-3 py-1.5 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
+                  },
+                  void 0,
+                  false,
+                  {
+                    fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                    lineNumber: 97,
+                    columnNumber: 13
+                  },
+                  this
+                ),
+                /* @__PURE__ */ jsxDEV(Search, { className: "size-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" }, void 0, false, {
+                  fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                  lineNumber: 104,
+                  columnNumber: 13
+                }, this),
+                searchTerm && /* @__PURE__ */ jsxDEV("span", { className: "absolute left-7 top-1/2 -translate-y-1/2 text-[10px] text-sky-600 font-medium", children: [
+                  matchCount,
+                  " مورد"
+                ] }, void 0, true, {
+                  fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                  lineNumber: 106,
+                  columnNumber: 13
+                }, this)
+              ] }, void 0, true, {
+                fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                lineNumber: 96,
+                columnNumber: 11
+              }, this)
+            ] }, void 0, true, {
+              fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+              lineNumber: 82,
+              columnNumber: 9
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "flex-1 overflow-y-auto p-6 bg-slate-900 text-slate-200 text-xs font-mono leading-relaxed select-text", dir: "ltr", children: /* @__PURE__ */ jsxDEV("pre", { className: "whitespace-pre-wrap break-words font-mono selection:bg-sky-500 selection:text-white", children: extractedText }, void 0, false, {
+              fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+              lineNumber: 115,
+              columnNumber: 11
+            }, this) }, void 0, false, {
+              fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+              lineNumber: 114,
+              columnNumber: 9
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between px-6 py-3 border-t border-slate-100 bg-slate-50/50 shrink-0", children: [
+              /* @__PURE__ */ jsxDEV("span", { className: "text-[11px] text-slate-500", children: "این متن دقیقاً همان محتوایی است که نرم‌افزارهای استخدام (Workday، Greenhouse و...) می‌خوانند." }, void 0, false, {
+                fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                lineNumber: 122,
+                columnNumber: 11
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-2", children: [
+                /* @__PURE__ */ jsxDEV(
+                  "button",
+                  {
+                    onClick: handleDownloadTxt,
+                    className: "flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-200/60 rounded-xl transition-colors",
+                    title: "دانلود فایل متنی برای فرم‌های استخدامی",
+                    children: [
+                      /* @__PURE__ */ jsxDEV(Download, { className: "size-3.5" }, void 0, false, {
+                        fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                        lineNumber: 131,
+                        columnNumber: 15
+                      }, this),
+                      /* @__PURE__ */ jsxDEV("span", { children: "دانلود .txt" }, void 0, false, {
+                        fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                        lineNumber: 132,
+                        columnNumber: 15
+                      }, this)
+                    ]
+                  },
+                  void 0,
+                  true,
+                  {
+                    fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                    lineNumber: 126,
+                    columnNumber: 13
+                  },
+                  this
+                ),
+                /* @__PURE__ */ jsxDEV(
+                  "button",
+                  {
+                    onClick: handleCopy,
+                    className: "flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-white bg-slate-800 hover:bg-slate-900 rounded-xl shadow-xs transition-colors",
+                    children: copied ? /* @__PURE__ */ jsxDEV(Fragment, { children: [
+                      /* @__PURE__ */ jsxDEV(Check, { className: "size-3.5 text-emerald-400" }, void 0, false, {
+                        fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                        lineNumber: 140,
+                        columnNumber: 19
+                      }, this),
+                      /* @__PURE__ */ jsxDEV("span", { children: "کپی شد!" }, void 0, false, {
+                        fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                        lineNumber: 141,
+                        columnNumber: 19
+                      }, this)
+                    ] }, void 0, true, {
+                      fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                      lineNumber: 139,
+                      columnNumber: 15
+                    }, this) : /* @__PURE__ */ jsxDEV(Fragment, { children: [
+                      /* @__PURE__ */ jsxDEV(Copy, { className: "size-3.5" }, void 0, false, {
+                        fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                        lineNumber: 145,
+                        columnNumber: 19
+                      }, this),
+                      /* @__PURE__ */ jsxDEV("span", { children: "کپی تمام متن (Plain Text)" }, void 0, false, {
+                        fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                        lineNumber: 146,
+                        columnNumber: 19
+                      }, this)
+                    ] }, void 0, true, {
+                      fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                      lineNumber: 144,
+                      columnNumber: 15
+                    }, this)
+                  },
+                  void 0,
+                  false,
+                  {
+                    fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                    lineNumber: 134,
+                    columnNumber: 13
+                  },
+                  this
+                )
+              ] }, void 0, true, {
+                fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+                lineNumber: 125,
+                columnNumber: 11
+              }, this)
+            ] }, void 0, true, {
+              fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+              lineNumber: 121,
+              columnNumber: 9
+            }, this)
+          ]
+        },
+        void 0,
+        true,
+        {
+          fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+          lineNumber: 49,
+          columnNumber: 7
+        },
+        this
+      )
+    },
+    void 0,
+    false,
+    {
+      fileName: "D:/code/resume bulder/src/components/ATSInspectorModal.tsx",
+      lineNumber: 45,
+      columnNumber: 5
+    },
+    this
+  );
+}
+_s(ATSInspectorModal, "NE86rL3vg4NVcTTWDavsT0hUBJs=");
+_c = ATSInspectorModal;
+var _c;
+$RefreshReg$(_c, "ATSInspectorModal");
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("D:/code/resume bulder/src/components/ATSInspectorModal.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/code/resume bulder/src/components/ATSInspectorModal.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+function $RefreshReg$(type, id) {
+  return RefreshRuntime.register(type, "D:/code/resume bulder/src/components/ATSInspectorModal.tsx " + id);
+}
+function $RefreshSig$() {
+  return RefreshRuntime.createSignatureFunctionForTransform();
+}
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6IkFBeURjLFNBaUZFLFVBakZGOztBQXpEZCxTQUFTQSxnQkFBZ0I7QUFDekIsU0FBU0MsT0FBT0MsTUFBTUMsVUFBVUMsVUFBVUMsUUFBUUMsYUFBYUMsU0FBUztBQVd4RSx3QkFBd0JDLGtCQUFrQjtBQUFBLEVBQ3hDQztBQUFBQSxFQUNBQztBQUFBQSxFQUNBQztBQUFBQSxFQUNBQztBQUFBQSxFQUNBQztBQUFBQSxFQUNBQztBQUNzQixHQUFHO0FBQUFDLEtBQUE7QUFDekIsUUFBTSxDQUFDQyxRQUFRQyxTQUFTLElBQUlqQixTQUFTLEtBQUs7QUFFMUMsTUFBSSxDQUFDUyxPQUFRLFFBQU87QUFFcEIsUUFBTVMsYUFBYUEsTUFBTTtBQUN2QkMsY0FBVUMsVUFBVUMsVUFBVVYsYUFBYTtBQUMzQ00sY0FBVSxJQUFJO0FBQ2RLLGVBQVcsTUFBTUwsVUFBVSxLQUFLLEdBQUcsR0FBSTtBQUFBLEVBQ3pDO0FBRUEsUUFBTU0sb0JBQW9CQSxNQUFNO0FBQzlCLFVBQU1DLFVBQVVDLFNBQVNDLGNBQWMsR0FBRztBQUMxQyxVQUFNQyxPQUFPLElBQUlDLEtBQUssQ0FBQ2pCLGFBQWEsR0FBRyxFQUFFa0IsTUFBTSwyQkFBMkIsQ0FBQztBQUMzRUwsWUFBUU0sT0FBT0MsSUFBSUMsZ0JBQWdCTCxJQUFJO0FBQ3ZDSCxZQUFRUyxXQUFXO0FBQ25CUixhQUFTUyxLQUFLQyxZQUFZWCxPQUFPO0FBQ2pDQSxZQUFRWSxNQUFNO0FBQ2RYLGFBQVNTLEtBQUtHLFlBQVliLE9BQU87QUFBQSxFQUNuQztBQUVBLFFBQU1jLFFBQVEzQixjQUFjNEIsS0FBSyxFQUFFQyxNQUFNLEtBQUssRUFBRUMsT0FBT0MsT0FBTztBQUM5RCxRQUFNQyxZQUFZTCxNQUFNTTtBQUV4QixTQUNFO0FBQUEsSUFBQztBQUFBO0FBQUEsTUFDQyxXQUFVO0FBQUEsTUFDVixTQUFTbEM7QUFBQUEsTUFFVDtBQUFBLFFBQUM7QUFBQTtBQUFBLFVBQ0MsV0FBVTtBQUFBLFVBQ1YsU0FBUyxDQUFDbUMsTUFBTUEsRUFBRUMsZ0JBQWdCO0FBQUEsVUFDbEMsS0FBSTtBQUFBLFVBR0o7QUFBQSxtQ0FBQyxTQUFJLFdBQVUsaUdBQ2I7QUFBQSxxQ0FBQyxTQUFJLFdBQVUsNkJBQ2I7QUFBQSx1Q0FBQyxTQUFJLFdBQVUsa0RBQ2IsaUNBQUMsZUFBWSxXQUFVLFlBQXZCO0FBQUE7QUFBQTtBQUFBO0FBQUEsdUJBQStCLEtBRGpDO0FBQUE7QUFBQTtBQUFBO0FBQUEsdUJBRUE7QUFBQSxnQkFDQSx1QkFBQyxTQUNDO0FBQUEseUNBQUMsUUFBRyxXQUFVLGtFQUNaO0FBQUEsMkNBQUMsVUFBSyx1REFBTjtBQUFBO0FBQUE7QUFBQTtBQUFBLDJCQUE2QztBQUFBLG9CQUM3Qyx1QkFBQyxVQUFLLFdBQVUsb0ZBQWtGLHFDQUFsRztBQUFBO0FBQUE7QUFBQTtBQUFBLDJCQUVBO0FBQUEsdUJBSkY7QUFBQTtBQUFBO0FBQUE7QUFBQSx5QkFLQTtBQUFBLGtCQUNBLHVCQUFDLE9BQUUsV0FBVSwwQkFBd0IsbUdBQXJDO0FBQUE7QUFBQTtBQUFBO0FBQUEseUJBRUE7QUFBQSxxQkFURjtBQUFBO0FBQUE7QUFBQTtBQUFBLHVCQVVBO0FBQUEsbUJBZEY7QUFBQTtBQUFBO0FBQUE7QUFBQSxxQkFlQTtBQUFBLGNBQ0E7QUFBQSxnQkFBQztBQUFBO0FBQUEsa0JBQ0MsU0FBU3BDO0FBQUFBLGtCQUNULFdBQVU7QUFBQSxrQkFDVixPQUFNO0FBQUEsa0JBRU4saUNBQUMsS0FBRSxXQUFVLFlBQWI7QUFBQTtBQUFBO0FBQUE7QUFBQSx5QkFBcUI7QUFBQTtBQUFBLGdCQUx2QjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsY0FNQTtBQUFBLGlCQXZCRjtBQUFBO0FBQUE7QUFBQTtBQUFBLG1CQXdCQTtBQUFBLFlBR0EsdUJBQUMsU0FBSSxXQUFVLHFHQUViO0FBQUEscUNBQUMsU0FBSSxXQUFVLGtEQUNiO0FBQUEsdUNBQUMsU0FBSSxXQUFVLDZFQUNiO0FBQUEseUNBQUMsWUFBUyxXQUFVLDZCQUFwQjtBQUFBO0FBQUE7QUFBQTtBQUFBLHlCQUE2QztBQUFBLGtCQUM3Qyx1QkFBQyxVQUFNaUM7QUFBQUE7QUFBQUEsb0JBQVU7QUFBQSx1QkFBakI7QUFBQTtBQUFBO0FBQUE7QUFBQSx5QkFBa0M7QUFBQSxxQkFGcEM7QUFBQTtBQUFBO0FBQUE7QUFBQSx1QkFHQTtBQUFBLGdCQUNBLHVCQUFDLFNBQUksV0FBVSwrRkFDYjtBQUFBLHlDQUFDLGVBQVksV0FBVSxjQUF2QjtBQUFBO0FBQUE7QUFBQTtBQUFBLHlCQUFpQztBQUFBLGtCQUNqQyx1QkFBQyxVQUFLLHdEQUFOO0FBQUE7QUFBQTtBQUFBO0FBQUEseUJBQThDO0FBQUEscUJBRmhEO0FBQUE7QUFBQTtBQUFBO0FBQUEsdUJBR0E7QUFBQSxtQkFSRjtBQUFBO0FBQUE7QUFBQTtBQUFBLHFCQVNBO0FBQUEsY0FHQSx1QkFBQyxTQUFJLFdBQVUsMENBQ2I7QUFBQTtBQUFBLGtCQUFDO0FBQUE7QUFBQSxvQkFDQyxNQUFLO0FBQUEsb0JBQ0wsYUFBWTtBQUFBLG9CQUNaLE9BQU8vQjtBQUFBQSxvQkFDUCxVQUFVLENBQUNpQyxNQUFNaEMsZUFBZWdDLEVBQUVFLE9BQU9DLEtBQUs7QUFBQSxvQkFDOUMsV0FBVTtBQUFBO0FBQUEsa0JBTFo7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLGdCQUtzTTtBQUFBLGdCQUV0TSx1QkFBQyxVQUFPLFdBQVUsNEZBQWxCO0FBQUE7QUFBQTtBQUFBO0FBQUEsdUJBQTBHO0FBQUEsZ0JBQ3pHcEMsY0FDQyx1QkFBQyxVQUFLLFdBQVUsaUZBQ2JFO0FBQUFBO0FBQUFBLGtCQUFXO0FBQUEscUJBRGQ7QUFBQTtBQUFBO0FBQUE7QUFBQSx1QkFFQTtBQUFBLG1CQVpKO0FBQUE7QUFBQTtBQUFBO0FBQUEscUJBY0E7QUFBQSxpQkE1QkY7QUFBQTtBQUFBO0FBQUE7QUFBQSxtQkE2QkE7QUFBQSxZQUdBLHVCQUFDLFNBQUksV0FBVSx3R0FBdUcsS0FBSSxPQUN4SCxpQ0FBQyxTQUFJLFdBQVUsdUZBQ1pILDJCQURIO0FBQUE7QUFBQTtBQUFBO0FBQUEsbUJBRUEsS0FIRjtBQUFBO0FBQUE7QUFBQTtBQUFBLG1CQUlBO0FBQUEsWUFHQSx1QkFBQyxTQUFJLFdBQVUsaUdBQ2I7QUFBQSxxQ0FBQyxVQUFLLFdBQVUsOEJBQTRCLDZHQUE1QztBQUFBO0FBQUE7QUFBQTtBQUFBLHFCQUVBO0FBQUEsY0FDQSx1QkFBQyxTQUFJLFdBQVUsMkJBQ2I7QUFBQTtBQUFBLGtCQUFDO0FBQUE7QUFBQSxvQkFDQyxTQUFTWTtBQUFBQSxvQkFDVCxXQUFVO0FBQUEsb0JBQ1YsT0FBTTtBQUFBLG9CQUVOO0FBQUEsNkNBQUMsWUFBUyxXQUFVLGNBQXBCO0FBQUE7QUFBQTtBQUFBO0FBQUEsNkJBQThCO0FBQUEsc0JBQzlCLHVCQUFDLFVBQUssMkJBQU47QUFBQTtBQUFBO0FBQUE7QUFBQSw2QkFBaUI7QUFBQTtBQUFBO0FBQUEsa0JBTm5CO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxnQkFPQTtBQUFBLGdCQUNBO0FBQUEsa0JBQUM7QUFBQTtBQUFBLG9CQUNDLFNBQVNMO0FBQUFBLG9CQUNULFdBQVU7QUFBQSxvQkFFVEYsbUJBQ0MsbUNBQ0U7QUFBQSw2Q0FBQyxTQUFNLFdBQVUsK0JBQWpCO0FBQUE7QUFBQTtBQUFBO0FBQUEsNkJBQTRDO0FBQUEsc0JBQzVDLHVCQUFDLFVBQUssdUJBQU47QUFBQTtBQUFBO0FBQUE7QUFBQSw2QkFBYTtBQUFBLHlCQUZmO0FBQUE7QUFBQTtBQUFBO0FBQUEsMkJBR0EsSUFFQSxtQ0FDRTtBQUFBLDZDQUFDLFFBQUssV0FBVSxjQUFoQjtBQUFBO0FBQUE7QUFBQTtBQUFBLDZCQUEwQjtBQUFBLHNCQUMxQix1QkFBQyxVQUFLLHlDQUFOO0FBQUE7QUFBQTtBQUFBO0FBQUEsNkJBQStCO0FBQUEseUJBRmpDO0FBQUE7QUFBQTtBQUFBO0FBQUEsMkJBR0E7QUFBQTtBQUFBLGtCQWJKO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxnQkFlQTtBQUFBLG1CQXhCRjtBQUFBO0FBQUE7QUFBQTtBQUFBLHFCQXlCQTtBQUFBLGlCQTdCRjtBQUFBO0FBQUE7QUFBQTtBQUFBLG1CQThCQTtBQUFBO0FBQUE7QUFBQSxRQXRHRjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsTUF1R0E7QUFBQTtBQUFBLElBM0dGO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxFQTRHQTtBQUVKO0FBQUNELEdBOUl1QlAsbUJBQWlCO0FBQUEsS0FBakJBO0FBQWlCLElBQUF5QztBQUFBLGFBQUFBLElBQUEiLCJuYW1lcyI6WyJ1c2VTdGF0ZSIsIkNoZWNrIiwiQ29weSIsIkRvd25sb2FkIiwiRmlsZVRleHQiLCJTZWFyY2giLCJTaGllbGRDaGVjayIsIlgiLCJBVFNJbnNwZWN0b3JNb2RhbCIsImlzT3BlbiIsIm9uQ2xvc2UiLCJleHRyYWN0ZWRUZXh0Iiwic2VhcmNoVGVybSIsIm9uU2VhcmNoQ2hhbmdlIiwibWF0Y2hDb3VudCIsIl9zIiwiY29waWVkIiwic2V0Q29waWVkIiwiaGFuZGxlQ29weSIsIm5hdmlnYXRvciIsImNsaXBib2FyZCIsIndyaXRlVGV4dCIsInNldFRpbWVvdXQiLCJoYW5kbGVEb3dubG9hZFR4dCIsImVsZW1lbnQiLCJkb2N1bWVudCIsImNyZWF0ZUVsZW1lbnQiLCJmaWxlIiwiQmxvYiIsInR5cGUiLCJocmVmIiwiVVJMIiwiY3JlYXRlT2JqZWN0VVJMIiwiZG93bmxvYWQiLCJib2R5IiwiYXBwZW5kQ2hpbGQiLCJjbGljayIsInJlbW92ZUNoaWxkIiwid29yZHMiLCJ0cmltIiwic3BsaXQiLCJmaWx0ZXIiLCJCb29sZWFuIiwid29yZENvdW50IiwibGVuZ3RoIiwiZSIsInN0b3BQcm9wYWdhdGlvbiIsInRhcmdldCIsInZhbHVlIiwiX2MiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiQVRTSW5zcGVjdG9yTW9kYWwudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IHVzZVN0YXRlIH0gZnJvbSBcInJlYWN0XCI7XG5pbXBvcnQgeyBDaGVjaywgQ29weSwgRG93bmxvYWQsIEZpbGVUZXh0LCBTZWFyY2gsIFNoaWVsZENoZWNrLCBYIH0gZnJvbSBcImx1Y2lkZS1yZWFjdFwiO1xuXG5pbnRlcmZhY2UgQVRTSW5zcGVjdG9yTW9kYWxQcm9wcyB7XG4gIGlzT3BlbjogYm9vbGVhbjtcbiAgb25DbG9zZTogKCkgPT4gdm9pZDtcbiAgZXh0cmFjdGVkVGV4dDogc3RyaW5nO1xuICBzZWFyY2hUZXJtOiBzdHJpbmc7XG4gIG9uU2VhcmNoQ2hhbmdlOiAodGVybTogc3RyaW5nKSA9PiB2b2lkO1xuICBtYXRjaENvdW50OiBudW1iZXI7XG59XG5cbmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIEFUU0luc3BlY3Rvck1vZGFsKHtcbiAgaXNPcGVuLFxuICBvbkNsb3NlLFxuICBleHRyYWN0ZWRUZXh0LFxuICBzZWFyY2hUZXJtLFxuICBvblNlYXJjaENoYW5nZSxcbiAgbWF0Y2hDb3VudCxcbn06IEFUU0luc3BlY3Rvck1vZGFsUHJvcHMpIHtcbiAgY29uc3QgW2NvcGllZCwgc2V0Q29waWVkXSA9IHVzZVN0YXRlKGZhbHNlKTtcblxuICBpZiAoIWlzT3BlbikgcmV0dXJuIG51bGw7XG5cbiAgY29uc3QgaGFuZGxlQ29weSA9ICgpID0+IHtcbiAgICBuYXZpZ2F0b3IuY2xpcGJvYXJkLndyaXRlVGV4dChleHRyYWN0ZWRUZXh0KTtcbiAgICBzZXRDb3BpZWQodHJ1ZSk7XG4gICAgc2V0VGltZW91dCgoKSA9PiBzZXRDb3BpZWQoZmFsc2UpLCAyMDAwKTtcbiAgfTtcblxuICBjb25zdCBoYW5kbGVEb3dubG9hZFR4dCA9ICgpID0+IHtcbiAgICBjb25zdCBlbGVtZW50ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImFcIik7XG4gICAgY29uc3QgZmlsZSA9IG5ldyBCbG9iKFtleHRyYWN0ZWRUZXh0XSwgeyB0eXBlOiBcInRleHQvcGxhaW47Y2hhcnNldD11dGYtOFwiIH0pO1xuICAgIGVsZW1lbnQuaHJlZiA9IFVSTC5jcmVhdGVPYmplY3RVUkwoZmlsZSk7XG4gICAgZWxlbWVudC5kb3dubG9hZCA9IFwiU2hheWFuLUVzZmFoYW5pemFkZWgtUmVzdW1lLUFUUy50eHRcIjtcbiAgICBkb2N1bWVudC5ib2R5LmFwcGVuZENoaWxkKGVsZW1lbnQpO1xuICAgIGVsZW1lbnQuY2xpY2soKTtcbiAgICBkb2N1bWVudC5ib2R5LnJlbW92ZUNoaWxkKGVsZW1lbnQpO1xuICB9O1xuXG4gIGNvbnN0IHdvcmRzID0gZXh0cmFjdGVkVGV4dC50cmltKCkuc3BsaXQoL1xccysvKS5maWx0ZXIoQm9vbGVhbik7XG4gIGNvbnN0IHdvcmRDb3VudCA9IHdvcmRzLmxlbmd0aDtcblxuICByZXR1cm4gKFxuICAgIDxkaXZcbiAgICAgIGNsYXNzTmFtZT1cImZpeGVkIGluc2V0LTAgei01MCBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciBwLTQgYmctc2xhdGUtOTAwLzYwIGJhY2tkcm9wLWJsdXIteHMgbm8tcHJpbnRcIlxuICAgICAgb25DbGljaz17b25DbG9zZX1cbiAgICA+XG4gICAgICA8ZGl2XG4gICAgICAgIGNsYXNzTmFtZT1cInctZnVsbCBtYXgtdy0yeGwgYmctd2hpdGUgcm91bmRlZC0yeGwgc2hhZG93LTJ4bCBib3JkZXIgYm9yZGVyLXNsYXRlLTIwMCBvdmVyZmxvdy1oaWRkZW4gZmxleCBmbGV4LWNvbCBtYXgtaC1bODV2aF0gYW5pbWF0ZS1pbiBmYWRlLWluIHpvb20taW4tOTUgZHVyYXRpb24tMTUwXCJcbiAgICAgICAgb25DbGljaz17KGUpID0+IGUuc3RvcFByb3BhZ2F0aW9uKCl9XG4gICAgICAgIGRpcj1cInJ0bFwiXG4gICAgICA+XG4gICAgICAgIHsvKiBIZWFkZXIgKi99XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuIHB4LTYgcHktNCBib3JkZXItYiBib3JkZXItc2xhdGUtMTAwIGJnLXNsYXRlLTUwLzgwIHNocmluay0wXCI+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMi41XCI+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInAtMiByb3VuZGVkLXhsIGJnLWVtZXJhbGQtMTAwIHRleHQtZW1lcmFsZC03MDBcIj5cbiAgICAgICAgICAgICAgPFNoaWVsZENoZWNrIGNsYXNzTmFtZT1cInNpemUtNVwiIC8+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgIDxoMyBjbGFzc05hbWU9XCJmb250LXNlbWlib2xkIHRleHQtc2xhdGUtODAwIHRleHQtYmFzZSBmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMlwiPlxuICAgICAgICAgICAgICAgIDxzcGFuPtiq2LPYqiDYrtmI2KfZhtin24zbjCDZiCDYp9iz2qnZhiBBVFMgKFRleHQgSW5zcGVjdG9yKTwvc3Bhbj5cbiAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LVsxMHB4XSBweC0yIHB5LTAuNSByb3VuZGVkLWZ1bGwgYmctZW1lcmFsZC0xMDAgdGV4dC1lbWVyYWxkLTcwMCBmb250LW1lZGl1bVwiPlxuICAgICAgICAgICAgICAgICAg27HbsNuw2aog2YLYp9io2YQg2KfYs9qp2YYg2Ygg2LPZhNqp2KpcbiAgICAgICAgICAgICAgICA8L3NwYW4+XG4gICAgICAgICAgICAgIDwvaDM+XG4gICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1zbGF0ZS01MDBcIj5cbiAgICAgICAgICAgICAgICDZhdi02KfZh9iv2Ycg2YXYs9iq2YLbjNmFINmF2KrZhiDYp9iz2KrYrtix2KfYrOKAjNi02K/ZhyDYqtmI2LPYtyDZhdmI2KrZiNix2YfYp9uMIEFUUyDZiCDYp9i32YXbjNmG2KfZhiDYp9iyINiu2YjYp9mG2Kcg2KjZiNiv2YYg2KrZhdin2YUg2KjYrti04oCM2YfYp1xuICAgICAgICAgICAgICA8L3A+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8YnV0dG9uXG4gICAgICAgICAgICBvbkNsaWNrPXtvbkNsb3NlfVxuICAgICAgICAgICAgY2xhc3NOYW1lPVwicC0xLjUgcm91bmRlZC1sZyB0ZXh0LXNsYXRlLTQwMCBob3Zlcjp0ZXh0LXNsYXRlLTYwMCBob3ZlcjpiZy1zbGF0ZS0xMDAgdHJhbnNpdGlvbi1jb2xvcnNcIlxuICAgICAgICAgICAgdGl0bGU9XCLYqNiz2KrZhlwiXG4gICAgICAgICAgPlxuICAgICAgICAgICAgPFggY2xhc3NOYW1lPVwic2l6ZS00XCIgLz5cbiAgICAgICAgICA8L2J1dHRvbj5cbiAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgey8qIFN0YXRzICYgU2VhcmNoIFRvb2xiYXIgKi99XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC00IGJvcmRlci1iIGJvcmRlci1zbGF0ZS0xMDAgYmctd2hpdGUgZmxleCBmbGV4LXdyYXAgaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiBnYXAtMyBzaHJpbmstMFwiPlxuICAgICAgICAgIHsvKiBRdWljayBNZXRyaWNzICovfVxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTMgdGV4dC14cyB0ZXh0LXNsYXRlLTYwMFwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMS41IHB4LTIuNSBweS0xIHJvdW5kZWQtbGcgYmctc2xhdGUtMTAwIGZvbnQtbWVkaXVtXCI+XG4gICAgICAgICAgICAgIDxGaWxlVGV4dCBjbGFzc05hbWU9XCJzaXplLTMuNSB0ZXh0LXNsYXRlLTUwMFwiIC8+XG4gICAgICAgICAgICAgIDxzcGFuPnt3b3JkQ291bnR9INqp2YTZhdmHINin2LPYqtiu2LHYp9is4oCM2LTYr9mHPC9zcGFuPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0xLjUgcHgtMi41IHB5LTEgcm91bmRlZC1sZyBiZy1lbWVyYWxkLTUwIHRleHQtZW1lcmFsZC03MDAgZm9udC1tZWRpdW1cIj5cbiAgICAgICAgICAgICAgPFNoaWVsZENoZWNrIGNsYXNzTmFtZT1cInNpemUtMy41XCIgLz5cbiAgICAgICAgICAgICAgPHNwYW4+2KjYr9mI2YYg2YXYqtmGINm+2YbZh9in2YYgLyDZgdin2YLYryDYqti12KfZiNuM2LEg2LHYs9iq2LHbjNmQINmF2KrZhtuMPC9zcGFuPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICB7LyogU2VhcmNoIGluIEFUUyBUZXh0ICovfVxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicmVsYXRpdmUgZmxleC0xIG1pbi13LVsyMDBweF0gbWF4LXcteHNcIj5cbiAgICAgICAgICAgIDxpbnB1dFxuICAgICAgICAgICAgICB0eXBlPVwidGV4dFwiXG4gICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwi2KzYs9iq2KzZiCDYr9ixINmF2KrZhiDYsdiy2YjZhdmHICjaqdmE24zYr9mI2KfamNmH4oCM2YfYpykuLi5cIlxuICAgICAgICAgICAgICB2YWx1ZT17c2VhcmNoVGVybX1cbiAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBvblNlYXJjaENoYW5nZShlLnRhcmdldC52YWx1ZSl9XG4gICAgICAgICAgICAgIGNsYXNzTmFtZT1cInctZnVsbCBwbC04IHByLTMgcHktMS41IHRleHQteHMgcm91bmRlZC14bCBib3JkZXIgYm9yZGVyLXNsYXRlLTIwMCBiZy1zbGF0ZS01MCBmb2N1czpiZy13aGl0ZSBmb2N1czpvdXRsaW5lLW5vbmUgZm9jdXM6cmluZy0yIGZvY3VzOnJpbmctc2t5LTUwMCBmb2N1czpib3JkZXItdHJhbnNwYXJlbnQgdHJhbnNpdGlvbi1hbGxcIlxuICAgICAgICAgICAgLz5cbiAgICAgICAgICAgIDxTZWFyY2ggY2xhc3NOYW1lPVwic2l6ZS0zLjUgdGV4dC1zbGF0ZS00MDAgYWJzb2x1dGUgbGVmdC0yLjUgdG9wLTEvMiAtdHJhbnNsYXRlLXktMS8yIHBvaW50ZXItZXZlbnRzLW5vbmVcIiAvPlxuICAgICAgICAgICAge3NlYXJjaFRlcm0gJiYgKFxuICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJhYnNvbHV0ZSBsZWZ0LTcgdG9wLTEvMiAtdHJhbnNsYXRlLXktMS8yIHRleHQtWzEwcHhdIHRleHQtc2t5LTYwMCBmb250LW1lZGl1bVwiPlxuICAgICAgICAgICAgICAgIHttYXRjaENvdW50fSDZhdmI2LHYr1xuICAgICAgICAgICAgICA8L3NwYW4+XG4gICAgICAgICAgICApfVxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cblxuICAgICAgICB7LyogRXh0cmFjdGVkIFRleHQgQm9keSAqL31cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4LTEgb3ZlcmZsb3cteS1hdXRvIHAtNiBiZy1zbGF0ZS05MDAgdGV4dC1zbGF0ZS0yMDAgdGV4dC14cyBmb250LW1vbm8gbGVhZGluZy1yZWxheGVkIHNlbGVjdC10ZXh0XCIgZGlyPVwibHRyXCI+XG4gICAgICAgICAgPHByZSBjbGFzc05hbWU9XCJ3aGl0ZXNwYWNlLXByZS13cmFwIGJyZWFrLXdvcmRzIGZvbnQtbW9ubyBzZWxlY3Rpb246Ymctc2t5LTUwMCBzZWxlY3Rpb246dGV4dC13aGl0ZVwiPlxuICAgICAgICAgICAge2V4dHJhY3RlZFRleHR9XG4gICAgICAgICAgPC9wcmU+XG4gICAgICAgIDwvZGl2PlxuXG4gICAgICAgIHsvKiBGb290ZXIgQWN0aW9ucyAqL31cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gcHgtNiBweS0zIGJvcmRlci10IGJvcmRlci1zbGF0ZS0xMDAgYmctc2xhdGUtNTAvNTAgc2hyaW5rLTBcIj5cbiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LVsxMXB4XSB0ZXh0LXNsYXRlLTUwMFwiPlxuICAgICAgICAgICAg2KfbjNmGINmF2KrZhiDYr9mC24zZgtin2Ysg2YfZhdin2YYg2YXYrdiq2YjYp9uM24wg2KfYs9iqINqp2Ycg2YbYsdmF4oCM2KfZgdiy2KfYsdmH2KfbjCDYp9iz2KrYrtiv2KfZhSAoV29ya2RhediMIEdyZWVuaG91c2Ug2YguLi4pINmF24zigIzYrtmI2KfZhtmG2K8uXG4gICAgICAgICAgPC9zcGFuPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTJcIj5cbiAgICAgICAgICAgIDxidXR0b25cbiAgICAgICAgICAgICAgb25DbGljaz17aGFuZGxlRG93bmxvYWRUeHR9XG4gICAgICAgICAgICAgIGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0xLjUgcHgtMyBweS0yIHRleHQteHMgZm9udC1tZWRpdW0gdGV4dC1zbGF0ZS03MDAgaG92ZXI6dGV4dC1zbGF0ZS05MDAgaG92ZXI6Ymctc2xhdGUtMjAwLzYwIHJvdW5kZWQteGwgdHJhbnNpdGlvbi1jb2xvcnNcIlxuICAgICAgICAgICAgICB0aXRsZT1cItiv2KfZhtmE2YjYryDZgdin24zZhCDZhdiq2YbbjCDYqNix2KfbjCDZgdix2YXigIzZh9in24wg2KfYs9iq2K7Yr9in2YXbjFwiXG4gICAgICAgICAgICA+XG4gICAgICAgICAgICAgIDxEb3dubG9hZCBjbGFzc05hbWU9XCJzaXplLTMuNVwiIC8+XG4gICAgICAgICAgICAgIDxzcGFuPtiv2KfZhtmE2YjYryAudHh0PC9zcGFuPlxuICAgICAgICAgICAgPC9idXR0b24+XG4gICAgICAgICAgICA8YnV0dG9uXG4gICAgICAgICAgICAgIG9uQ2xpY2s9e2hhbmRsZUNvcHl9XG4gICAgICAgICAgICAgIGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0xLjUgcHgtNCBweS0yIHRleHQteHMgZm9udC1tZWRpdW0gdGV4dC13aGl0ZSBiZy1zbGF0ZS04MDAgaG92ZXI6Ymctc2xhdGUtOTAwIHJvdW5kZWQteGwgc2hhZG93LXhzIHRyYW5zaXRpb24tY29sb3JzXCJcbiAgICAgICAgICAgID5cbiAgICAgICAgICAgICAge2NvcGllZCA/IChcbiAgICAgICAgICAgICAgICA8PlxuICAgICAgICAgICAgICAgICAgPENoZWNrIGNsYXNzTmFtZT1cInNpemUtMy41IHRleHQtZW1lcmFsZC00MDBcIiAvPlxuICAgICAgICAgICAgICAgICAgPHNwYW4+2qnZvtuMINi02K8hPC9zcGFuPlxuICAgICAgICAgICAgICAgIDwvPlxuICAgICAgICAgICAgICApIDogKFxuICAgICAgICAgICAgICAgIDw+XG4gICAgICAgICAgICAgICAgICA8Q29weSBjbGFzc05hbWU9XCJzaXplLTMuNVwiIC8+XG4gICAgICAgICAgICAgICAgICA8c3Bhbj7aqdm+24wg2KrZhdin2YUg2YXYqtmGIChQbGFpbiBUZXh0KTwvc3Bhbj5cbiAgICAgICAgICAgICAgICA8Lz5cbiAgICAgICAgICAgICAgKX1cbiAgICAgICAgICAgIDwvYnV0dG9uPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuICApO1xufVxuIl0sImZpbGUiOiJEOi9jb2RlL3Jlc3VtZSBidWxkZXIvc3JjL2NvbXBvbmVudHMvQVRTSW5zcGVjdG9yTW9kYWwudHN4In0=

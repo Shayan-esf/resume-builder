@@ -1,0 +1,164 @@
+export const MASTER_RESUME_CONTENT = {
+  headlineRole: "Technical Product Manager",
+  headlineSubtitle: "Ex-Frontend Engineer | Product Discovery & Dev Handoff",
+  summary: "Technical Product Manager specializing in **Product Discovery & Dev Handoff** with a solid software engineering foundation in modern frontend architecture. Led the **Delband** Medicine 3.0 digital health platform (wearables & AI ecosystem) from 0-to-1 startup to an accredited **Knowledge-Based Enterprise**, securing **two institutional funding rounds**, **Presidential Innovation Fund** backing, and strategic acquisition by **Hamrahe Aval (MCI)**. Expert in bridging engineering squads, clinical advisors, and C-suite stakeholders using **Jobs-to-be-Done (JTBD)**, **Root Cause Analysis**, and metric-driven execution to scale enterprise B2B offerings (e.g., **Mobarakeh Steel Group**).",
+  skillGroups: [
+    {
+      category: "Product Strategy",
+      items: [
+        "Product Discovery",
+        "AI Rapid Prototyping",
+        "Startup Building",
+        "Product Building",
+        "Roadmap Planning",
+        "OKRs",
+        "PRD Writing",
+        "Agile/Scrum",
+        "User Research",
+        "Jobs-to-be-Done (JTBD)",
+        "Lean Validation (Wizard of Oz)",
+        "GTM Strategy",
+        "Prioritization",
+        "Growth Hacking",
+        "Stakeholder Management"
+      ]
+    },
+    {
+      category: "Technical Architecture",
+      items: [
+        "Custom AI Agent & Skills",
+        "TypeScript",
+        "React",
+        "Angular",
+        "RESTful APIs",
+        "SQL",
+        "Markdown Specs",
+        "Prompt Engineering",
+        "JavaScript",
+        "Tailwind CSS",
+        "Bootstrap",
+        "CI/CD",
+        "RxJS",
+        "Service Workers",
+        "Unit Testing"
+      ]
+    },
+    {
+      category: "Analytics & Business",
+      items: [
+        "Conversion Funnel Optimization",
+        "Customer Acquisition Cost (CAC) Reduction",
+        "Internal Rate of Return (IRR) Modeling",
+        "A/B Testing",
+        "Google Analytics 4",
+        "Microsoft Clarity"
+      ]
+    },
+    {
+      category: "Tools & Platforms",
+      items: [
+        "Jira",
+        "Figma",
+        "Notion",
+        "Azure DevOps",
+        "Git",
+        "CI/CD",
+        "Swagger",
+        "GitLab",
+        "Postman"
+      ]
+    }
+  ],
+  experiences: [
+    {
+      id: "tums",
+      role: "Technology & Product Advisor | Mentor Bootcamp",
+      intro: "Bridging clinical challenges and multidisciplinary tech solutions; mentor in **Iran's first clinical innovation bootcamp**",
+      bullets: [
+        "**Analytical Problem-Solving & Design Thinking —** Facilitated a **5-month clinical innovation program** applying Design Thinking and divergent/convergent thinking frameworks; trained clinical teams in **structured problem-solving**, stakeholder persuasion, and defending their proposals.",
+        "**Eldercare Team Mentorship & Execution —** Guided the eldercare team end-to-end from **team formation to product implementation** and **fundraising readiness**."
+      ],
+      tags: ["Design Thinking", "JTBD", "Prompt Engineering", "Vibe Coding", "Health-Tech", "Fundraising"]
+    },
+    {
+      id: "mci",
+      role: "Technical Product Manager",
+      intro: "Led the delivery of the **first native Med 3.0 digital health** service in Iran by aligning business strategy, user value, and economic impact, and orchestrating cross-functional product, engineering, and stakeholder teams.",
+      bullets: [
+        "**B2B Enterprise Pivot —** Led the strategic pivot into corporate wellness by launching an **enterprise digital health dashboard**; opened a new **B2B GTM channel** and secured enterprise accounts including **Mobarakeh Steel** (modeled to lift business-plan IRR by **15%**).",
+        "**Lean Discovery & Prototyping —** Built and shipped a standalone **Wizard of Oz** prototype directly to target users without engineering overhead; killed a low-ROI workout feature using pilot validation data, saving **5 sprints** and reducing GTM risk.",
+        "**Delivery & Performance Systems —** Eliminated key-person dependency by standardizing workflows, redesigning OKRs, and building a team/individual performance-tracking panel aligned with product outcomes, accelerating sprint delivery **20% ahead of estimates** with zero added headcount.",
+        "**Freemium Funnel, CLTV & CAC Optimization —** Architected a personalized, **sensor-less freemium funnel** tailored to distinct user segments and personas; accelerated user acquisition, improved **activation and free-to-hardware conversion**, maximized **CLTV**, and lowered **CAC** by guiding free users organically toward hardware purchase and paid subscriptions.",
+        "**Segmentation, Use-Case Expansion & Organic Growth —** Expanded daily usability and impact by reframing the same user beyond basic **self-care** into **Health Companion** and **organizational wellness** scenarios; separated buyer and end-user personas to cut low-value cohorts, while building **UGC sharing mechanisms** and **peer-to-peer competitive challenges** to drive organic referrals and **brand awareness**.",
+        "**Discovery-Driven Product Spin-offs —** Identified two distinct market needs during product discovery; prevented core-product feature bloat by securing management approval to spin them off into two independent, persona-specific products (**Rokhnama** and **BioPad**), then built both end-to-end with **AI as a Product Builder** through to active user acquisition and fundraising."
+      ],
+      tags: ["React", "Product Strategy", "Product Discovery", "GTM", "OKR", "Agile/Scrum", "Prototyping"]
+    },
+    {
+      id: "uxcel",
+      role: "Product Management Mentor",
+      intro: "Member of the Uxcel mentoring team — ranked among the **top 10 product management mentors** on an interactive learning platform serving **500,000+ professionals in 150+ countries** (including Microsoft, IBM, Samsung, and Dropbox).",
+      bullets: [
+        "**Mentoring & Professional Development —** Coached product management professionals worldwide through regular reviews of **170 real projects** and structured feedback, focused on developing decision-making and execution skills.",
+        "**Content Team & Mentor Network Coordination —** Coordinated with Uxcel's content team and international mentor network to design and publish specialized training, ensuring quality consistency across a distributed team."
+      ],
+      tags: ["Product Leadership", "Mentorship", "UX Strategy", "Product Team Upskilling", "Coaching"]
+    },
+    {
+      id: "ofoq",
+      role: "Frontend Developer",
+      intro: "Front-end developer with strong product mindset, collaborating closely with **product, SEO, and marketing teams** to deliver high-performance, scalable web experiences while developing stakeholder empathy.",
+      bullets: [
+        "**Website Update & Redesign —** Rebuilt PLP and PDP pages using **Angular 17** with **SSR** and implemented **Bootstrap + Tailwind CSS** for a scalable UI, achieving a **98+ mobile Lighthouse score** and a **100 Technical SEO score**.",
+        "**Venus Project —** Built MVPs for employee check-in/out, leave management, and internal dashboards using **Angular 14**; owned the end-to-end redesign of the cross-platform geolocation flow, reducing failed location check-in rates by **20%**.",
+        "**HR Services & Job Board Panel —** Developed and deployed a standalone HR subdomain featuring job listings, custom applicant pipeline tracking, and internal HR evaluation modules, cutting employee performance evaluation time by **60%**.",
+        "**Marketing Dashboard —** Delivered real-time KPI, SEO, and behavior dashboards using **Google Analytics, Clarity, and Looker Studio**, enabling marketing channel screening and the identification and removal of **funnel friction points**."
+      ],
+      tags: ["Angular", "TypeScript", "RxJs", "Sass", "Angular Material", "Bootstrap", "UI/UX", "OOP"]
+    }
+  ],
+  projects: [
+    {
+      id: "rokhnama",
+      title: "Rokhnama — Founder & Product Builder",
+      description: "Built a lightweight **digital storefront & web catalog engine** replacing static PDFs with mobile-first interactive showcases, including a live portal for **K. N. Toosi University of Technology (International Student Affairs)**."
+    },
+    {
+      id: "biopad",
+      title: "BioPad — Founder & Product Builder",
+      description: "Architected an independent **multi-wearable bodybuilding & digital health product** (Beta) converting raw biometric telemetry into actionable workout and recovery insights, featuring **3D interactive mascots** and AI-assisted feedback loops."
+    },
+    {
+      id: "mini-app-bot",
+      title: "Mini-App & Messaging Bot Development",
+      description: "Launched a native mini-app and bot across **three domestic messaging platforms** (Telegram, Bale, Rubika) with an **AI reporting & coaching assistant** and UGC sharing mechanisms; boosted brand awareness, drove organic acquisition of non-hardware users, and **lowered CAC**."
+    },
+    {
+      id: "design-system-delband",
+      title: "Design System & Delband App Redesign",
+      description: "Built Delband's **design system** and redesigned the mobile app with **Uxcel and custom AI agents** — saving **three months** of the product roadmap and cutting design costs by **60%**."
+    },
+    {
+      id: "indora",
+      title: "Indora — Location Intelligence",
+      description: "Shipped location-intelligence platform driving data decisions. Authored PRDs, mapped user journeys, and executed initial GTM strategies to operationalize raw location data."
+    },
+    {
+      id: "stakeholder-portal",
+      title: "Stakeholder Portal",
+      description: "Developed web management dashboard integrating **Gantt scheduling, task boards, and OKR tracking**, centralizing progress to provide transparency for leadership."
+    },
+    {
+      id: "eldercare",
+      title: "Eldercare Coordination Program",
+      description: 'Led interdisciplinary clinical team through agile discovery. Defined "trusted caregiver" criteria and capped scope to a live digital pilot, prioritizing readmission reduction.'
+    },
+    {
+      id: "mentorship-platform",
+      title: "Mentorship Services Platform",
+      description: "Directed end-to-end product discovery for a mentorship platform. Defined persona-driven workflows and prioritized high-value modules (session management, messaging) through final release."
+    }
+  ]
+};
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhaWxvcmluZy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgdHlwZSBUYWlsb3JpbmdJbnRlbnNpdHkgPSBcImJhbGFuY2VkXCIgfCBcInRhcmdldGVkXCIgfCBcImNvbmNpc2VcIjtcblxuZXhwb3J0IGludGVyZmFjZSBUYWlsb3JlZFNraWxsR3JvdXAge1xuICBjYXRlZ29yeTogc3RyaW5nO1xuICBpdGVtczogc3RyaW5nW107XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgVGFpbG9yZWRFeHBlcmllbmNlSXRlbSB7XG4gIGlkOiBzdHJpbmc7XG4gIHJvbGU6IHN0cmluZztcbiAgaW50cm86IHN0cmluZztcbiAgYnVsbGV0czogc3RyaW5nW107XG4gIHRhZ3M6IHN0cmluZ1tdO1xufVxuXG5leHBvcnQgaW50ZXJmYWNlIFRhaWxvcmVkUHJvamVjdEl0ZW0ge1xuICBpZDogc3RyaW5nO1xuICB0aXRsZTogc3RyaW5nO1xuICBkZXNjcmlwdGlvbjogc3RyaW5nO1xufVxuXG5leHBvcnQgaW50ZXJmYWNlIFRhaWxvcmVkUmVzdW1lQ29udGVudCB7XG4gIGhlYWRsaW5lUm9sZTogc3RyaW5nO1xuICBoZWFkbGluZVN1YnRpdGxlOiBzdHJpbmc7XG4gIHN1bW1hcnk6IHN0cmluZztcbiAgc2tpbGxHcm91cHM6IFRhaWxvcmVkU2tpbGxHcm91cFtdO1xuICBleHBlcmllbmNlczogVGFpbG9yZWRFeHBlcmllbmNlSXRlbVtdO1xuICBwcm9qZWN0czogVGFpbG9yZWRQcm9qZWN0SXRlbVtdO1xufVxuXG5leHBvcnQgaW50ZXJmYWNlIERvY0ZpbGVJdGVtIHtcbiAgZm9sZGVyOiBzdHJpbmc7XG4gIGZpbGVuYW1lOiBzdHJpbmc7XG4gIGNvbnRlbnQ6IHN0cmluZztcbiAgc2l6ZUJ5dGVzOiBudW1iZXI7XG4gIHVwZGF0ZWRBdDogc3RyaW5nO1xufVxuXG5leHBvcnQgaW50ZXJmYWNlIEF0c1Njb3JlQnJlYWtkb3duIHtcbiAga2V5d29yZE1hdGNoOiBudW1iZXI7XG4gIGV4cGVyaWVuY2VSZWxldmFuY2U6IG51bWJlcjtcbiAgaW1wYWN0QW5kTWV0cmljczogbnVtYmVyO1xuICBhdHNTdHJ1Y3R1cmVSZWFkYWJpbGl0eTogbnVtYmVyO1xufVxuXG5leHBvcnQgaW50ZXJmYWNlIEF0c01pc3NpbmdLZXl3b3JkIHtcbiAga2V5d29yZDogc3RyaW5nO1xuICBpbXBvcnRhbmNlOiBcImhpZ2hcIiB8IFwibWVkaXVtXCI7XG4gIGluRG9jczogYm9vbGVhbjtcbiAgd2hlcmVUb0FkZEZhOiBzdHJpbmc7XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgQXRzU3VnZ2VzdGVkQWRkaXRpb24ge1xuICBpZDogc3RyaW5nO1xuICBjYXRlZ29yeTogXCJza2lsbFwiIHwgXCJidWxsZXRcIiB8IFwicHJvamVjdFwiIHwgXCJzdW1tYXJ5XCI7XG4gIHRpdGxlRmE6IHN0cmluZztcbiAgcmVhc29uRmE6IHN0cmluZztcbiAgdGFyZ2V0U2VjdGlvbklkPzogc3RyaW5nO1xuICBlbmdsaXNoQ29udGVudDogc3RyaW5nO1xuICB2ZXJpZmllZEZyb21Eb2NzOiBib29sZWFuO1xufVxuXG5leHBvcnQgaW50ZXJmYWNlIEF0c09wdGltaXphdGlvbkl0ZW0ge1xuICBwcmlvcml0eTogXCJoaWdoXCIgfCBcIm1lZGl1bVwiIHwgXCJsb3dcIjtcbiAgYWN0aW9uRmE6IHN0cmluZztcbiAgZXhwZWN0ZWRJbXBhY3RGYTogc3RyaW5nO1xufVxuXG5leHBvcnQgaW50ZXJmYWNlIEF0c0FuYWx5c2lzUmVzdWx0IHtcbiAgb3ZlcmFsbFNjb3JlOiBudW1iZXI7XG4gIHByb2plY3RlZFNjb3JlQWZ0ZXJPcHRpbWl6YXRpb246IG51bWJlcjtcbiAgc2NvcmVCcmVha2Rvd246IEF0c1Njb3JlQnJlYWtkb3duO1xuICBkZXRlY3RlZENvbXBhbnk6IHN0cmluZztcbiAgZGV0ZWN0ZWRSb2xlOiBzdHJpbmc7XG4gIGV4ZWN1dGl2ZVZlcmRpY3RGYTogc3RyaW5nO1xuICBtYXRjaGVkS2V5d29yZHM6IHN0cmluZ1tdO1xuICBtaXNzaW5nS2V5d29yZHM6IEF0c01pc3NpbmdLZXl3b3JkW107XG4gIHN1Z2dlc3RlZEFkZGl0aW9uczogQXRzU3VnZ2VzdGVkQWRkaXRpb25bXTtcbiAgb3B0aW1pemF0aW9uQ2hlY2tsaXN0RmE6IEF0c09wdGltaXphdGlvbkl0ZW1bXTtcbiAgZG9jc1VzZWQ6IHN0cmluZ1tdO1xuICBhbmFseXplZEF0OiBudW1iZXI7XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgVGFpbG9yZWREcmFmdCB7XG4gIGlkOiBzdHJpbmc7XG4gIGNyZWF0ZWRBdDogbnVtYmVyO1xuICBqb2JEZXNjcmlwdGlvbjogc3RyaW5nO1xuICB0YXJnZXRDb21wYW55OiBzdHJpbmc7XG4gIHRhcmdldFJvbGU6IHN0cmluZztcbiAgaW50ZW5zaXR5OiBUYWlsb3JpbmdJbnRlbnNpdHk7XG4gIG1hdGNoZWRLZXl3b3Jkczogc3RyaW5nW107XG4gIG1pc3NpbmdPckdhcEtleXdvcmRzOiBzdHJpbmdbXTtcbiAgdGFpbG9yaW5nUmF0aW9uYWxlOiBzdHJpbmc7XG4gIGRvY3NVc2VkPzogc3RyaW5nW107XG4gIGF0c1Njb3JlQmVmb3JlPzogbnVtYmVyO1xuICBhdHNTY29yZUFmdGVyPzogbnVtYmVyO1xuICBjb250ZW50OiBUYWlsb3JlZFJlc3VtZUNvbnRlbnQ7XG59XG5cbmV4cG9ydCBjb25zdCBNQVNURVJfUkVTVU1FX0NPTlRFTlQ6IFRhaWxvcmVkUmVzdW1lQ29udGVudCA9IHtcbiAgaGVhZGxpbmVSb2xlOiBcIlRlY2huaWNhbCBQcm9kdWN0IE1hbmFnZXJcIixcbiAgaGVhZGxpbmVTdWJ0aXRsZTogXCJFeC1Gcm9udGVuZCBFbmdpbmVlciB8IFByb2R1Y3QgRGlzY292ZXJ5ICYgRGV2IEhhbmRvZmZcIixcbiAgc3VtbWFyeTpcbiAgICAnVGVjaG5pY2FsIFByb2R1Y3QgTWFuYWdlciBzcGVjaWFsaXppbmcgaW4gKipQcm9kdWN0IERpc2NvdmVyeSAmIERldiBIYW5kb2ZmKiogd2l0aCBhIHNvbGlkIHNvZnR3YXJlIGVuZ2luZWVyaW5nIGZvdW5kYXRpb24gaW4gbW9kZXJuIGZyb250ZW5kIGFyY2hpdGVjdHVyZS4gTGVkIHRoZSAqKkRlbGJhbmQqKiBNZWRpY2luZSAzLjAgZGlnaXRhbCBoZWFsdGggcGxhdGZvcm0gKHdlYXJhYmxlcyAmIEFJIGVjb3N5c3RlbSkgZnJvbSAwLXRvLTEgc3RhcnR1cCB0byBhbiBhY2NyZWRpdGVkICoqS25vd2xlZGdlLUJhc2VkIEVudGVycHJpc2UqKiwgc2VjdXJpbmcgKip0d28gaW5zdGl0dXRpb25hbCBmdW5kaW5nIHJvdW5kcyoqLCAqKlByZXNpZGVudGlhbCBJbm5vdmF0aW9uIEZ1bmQqKiBiYWNraW5nLCBhbmQgc3RyYXRlZ2ljIGFjcXVpc2l0aW9uIGJ5ICoqSGFtcmFoZSBBdmFsIChNQ0kpKiouIEV4cGVydCBpbiBicmlkZ2luZyBlbmdpbmVlcmluZyBzcXVhZHMsIGNsaW5pY2FsIGFkdmlzb3JzLCBhbmQgQy1zdWl0ZSBzdGFrZWhvbGRlcnMgdXNpbmcgKipKb2JzLXRvLWJlLURvbmUgKEpUQkQpKiosICoqUm9vdCBDYXVzZSBBbmFseXNpcyoqLCBhbmQgbWV0cmljLWRyaXZlbiBleGVjdXRpb24gdG8gc2NhbGUgZW50ZXJwcmlzZSBCMkIgb2ZmZXJpbmdzIChlLmcuLCAqKk1vYmFyYWtlaCBTdGVlbCBHcm91cCoqKS4nLFxuICBza2lsbEdyb3VwczogW1xuICAgIHtcbiAgICAgIGNhdGVnb3J5OiBcIlByb2R1Y3QgU3RyYXRlZ3lcIixcbiAgICAgIGl0ZW1zOiBbXG4gICAgICAgIFwiUHJvZHVjdCBEaXNjb3ZlcnlcIixcbiAgICAgICAgXCJBSSBSYXBpZCBQcm90b3R5cGluZ1wiLFxuICAgICAgICBcIlN0YXJ0dXAgQnVpbGRpbmdcIixcbiAgICAgICAgXCJQcm9kdWN0IEJ1aWxkaW5nXCIsXG4gICAgICAgIFwiUm9hZG1hcCBQbGFubmluZ1wiLFxuICAgICAgICBcIk9LUnNcIixcbiAgICAgICAgXCJQUkQgV3JpdGluZ1wiLFxuICAgICAgICBcIkFnaWxlL1NjcnVtXCIsXG4gICAgICAgIFwiVXNlciBSZXNlYXJjaFwiLFxuICAgICAgICBcIkpvYnMtdG8tYmUtRG9uZSAoSlRCRClcIixcbiAgICAgICAgXCJMZWFuIFZhbGlkYXRpb24gKFdpemFyZCBvZiBPeilcIixcbiAgICAgICAgXCJHVE0gU3RyYXRlZ3lcIixcbiAgICAgICAgXCJQcmlvcml0aXphdGlvblwiLFxuICAgICAgICBcIkdyb3d0aCBIYWNraW5nXCIsXG4gICAgICAgIFwiU3Rha2Vob2xkZXIgTWFuYWdlbWVudFwiLFxuICAgICAgXSxcbiAgICB9LFxuICAgIHtcbiAgICAgIGNhdGVnb3J5OiBcIlRlY2huaWNhbCBBcmNoaXRlY3R1cmVcIixcbiAgICAgIGl0ZW1zOiBbXG4gICAgICAgIFwiQ3VzdG9tIEFJIEFnZW50ICYgU2tpbGxzXCIsXG4gICAgICAgIFwiVHlwZVNjcmlwdFwiLFxuICAgICAgICBcIlJlYWN0XCIsXG4gICAgICAgIFwiQW5ndWxhclwiLFxuICAgICAgICBcIlJFU1RmdWwgQVBJc1wiLFxuICAgICAgICBcIlNRTFwiLFxuICAgICAgICBcIk1hcmtkb3duIFNwZWNzXCIsXG4gICAgICAgIFwiUHJvbXB0IEVuZ2luZWVyaW5nXCIsXG4gICAgICAgIFwiSmF2YVNjcmlwdFwiLFxuICAgICAgICBcIlRhaWx3aW5kIENTU1wiLFxuICAgICAgICBcIkJvb3RzdHJhcFwiLFxuICAgICAgICBcIkNJL0NEXCIsXG4gICAgICAgIFwiUnhKU1wiLFxuICAgICAgICBcIlNlcnZpY2UgV29ya2Vyc1wiLFxuICAgICAgICBcIlVuaXQgVGVzdGluZ1wiLFxuICAgICAgXSxcbiAgICB9LFxuICAgIHtcbiAgICAgIGNhdGVnb3J5OiBcIkFuYWx5dGljcyAmIEJ1c2luZXNzXCIsXG4gICAgICBpdGVtczogW1xuICAgICAgICBcIkNvbnZlcnNpb24gRnVubmVsIE9wdGltaXphdGlvblwiLFxuICAgICAgICBcIkN1c3RvbWVyIEFjcXVpc2l0aW9uIENvc3QgKENBQykgUmVkdWN0aW9uXCIsXG4gICAgICAgIFwiSW50ZXJuYWwgUmF0ZSBvZiBSZXR1cm4gKElSUikgTW9kZWxpbmdcIixcbiAgICAgICAgXCJBL0IgVGVzdGluZ1wiLFxuICAgICAgICBcIkdvb2dsZSBBbmFseXRpY3MgNFwiLFxuICAgICAgICBcIk1pY3Jvc29mdCBDbGFyaXR5XCIsXG4gICAgICBdLFxuICAgIH0sXG4gICAge1xuICAgICAgY2F0ZWdvcnk6IFwiVG9vbHMgJiBQbGF0Zm9ybXNcIixcbiAgICAgIGl0ZW1zOiBbXG4gICAgICAgIFwiSmlyYVwiLFxuICAgICAgICBcIkZpZ21hXCIsXG4gICAgICAgIFwiTm90aW9uXCIsXG4gICAgICAgIFwiQXp1cmUgRGV2T3BzXCIsXG4gICAgICAgIFwiR2l0XCIsXG4gICAgICAgIFwiQ0kvQ0RcIixcbiAgICAgICAgXCJTd2FnZ2VyXCIsXG4gICAgICAgIFwiR2l0TGFiXCIsXG4gICAgICAgIFwiUG9zdG1hblwiLFxuICAgICAgXSxcbiAgICB9LFxuICBdLFxuICBleHBlcmllbmNlczogW1xuICAgIHtcbiAgICAgIGlkOiBcInR1bXNcIixcbiAgICAgIHJvbGU6IFwiVGVjaG5vbG9neSAmIFByb2R1Y3QgQWR2aXNvciB8IE1lbnRvciBCb290Y2FtcFwiLFxuICAgICAgaW50cm86XG4gICAgICAgIFwiQnJpZGdpbmcgY2xpbmljYWwgY2hhbGxlbmdlcyBhbmQgbXVsdGlkaXNjaXBsaW5hcnkgdGVjaCBzb2x1dGlvbnM7IG1lbnRvciBpbiAqKklyYW4ncyBmaXJzdCBjbGluaWNhbCBpbm5vdmF0aW9uIGJvb3RjYW1wKipcIixcbiAgICAgIGJ1bGxldHM6IFtcbiAgICAgICAgXCIqKkFuYWx5dGljYWwgUHJvYmxlbS1Tb2x2aW5nICYgRGVzaWduIFRoaW5raW5nIOKAlCoqIEZhY2lsaXRhdGVkIGEgKio1LW1vbnRoIGNsaW5pY2FsIGlubm92YXRpb24gcHJvZ3JhbSoqIGFwcGx5aW5nIERlc2lnbiBUaGlua2luZyBhbmQgZGl2ZXJnZW50L2NvbnZlcmdlbnQgdGhpbmtpbmcgZnJhbWV3b3JrczsgdHJhaW5lZCBjbGluaWNhbCB0ZWFtcyBpbiAqKnN0cnVjdHVyZWQgcHJvYmxlbS1zb2x2aW5nKiosIHN0YWtlaG9sZGVyIHBlcnN1YXNpb24sIGFuZCBkZWZlbmRpbmcgdGhlaXIgcHJvcG9zYWxzLlwiLFxuICAgICAgICBcIioqRWxkZXJjYXJlIFRlYW0gTWVudG9yc2hpcCAmIEV4ZWN1dGlvbiDigJQqKiBHdWlkZWQgdGhlIGVsZGVyY2FyZSB0ZWFtIGVuZC10by1lbmQgZnJvbSAqKnRlYW0gZm9ybWF0aW9uIHRvIHByb2R1Y3QgaW1wbGVtZW50YXRpb24qKiBhbmQgKipmdW5kcmFpc2luZyByZWFkaW5lc3MqKi5cIixcbiAgICAgIF0sXG4gICAgICB0YWdzOiBbXCJEZXNpZ24gVGhpbmtpbmdcIiwgXCJKVEJEXCIsIFwiUHJvbXB0IEVuZ2luZWVyaW5nXCIsIFwiVmliZSBDb2RpbmdcIiwgXCJIZWFsdGgtVGVjaFwiLCBcIkZ1bmRyYWlzaW5nXCJdLFxuICAgIH0sXG4gICAge1xuICAgICAgaWQ6IFwibWNpXCIsXG4gICAgICByb2xlOiBcIlRlY2huaWNhbCBQcm9kdWN0IE1hbmFnZXJcIixcbiAgICAgIGludHJvOlxuICAgICAgICBcIkxlZCB0aGUgZGVsaXZlcnkgb2YgdGhlICoqZmlyc3QgbmF0aXZlIE1lZCAzLjAgZGlnaXRhbCBoZWFsdGgqKiBzZXJ2aWNlIGluIElyYW4gYnkgYWxpZ25pbmcgYnVzaW5lc3Mgc3RyYXRlZ3ksIHVzZXIgdmFsdWUsIGFuZCBlY29ub21pYyBpbXBhY3QsIGFuZCBvcmNoZXN0cmF0aW5nIGNyb3NzLWZ1bmN0aW9uYWwgcHJvZHVjdCwgZW5naW5lZXJpbmcsIGFuZCBzdGFrZWhvbGRlciB0ZWFtcy5cIixcbiAgICAgIGJ1bGxldHM6IFtcbiAgICAgICAgXCIqKkIyQiBFbnRlcnByaXNlIFBpdm90IOKAlCoqIExlZCB0aGUgc3RyYXRlZ2ljIHBpdm90IGludG8gY29ycG9yYXRlIHdlbGxuZXNzIGJ5IGxhdW5jaGluZyBhbiAqKmVudGVycHJpc2UgZGlnaXRhbCBoZWFsdGggZGFzaGJvYXJkKio7IG9wZW5lZCBhIG5ldyAqKkIyQiBHVE0gY2hhbm5lbCoqIGFuZCBzZWN1cmVkIGVudGVycHJpc2UgYWNjb3VudHMgaW5jbHVkaW5nICoqTW9iYXJha2VoIFN0ZWVsKiogKG1vZGVsZWQgdG8gbGlmdCBidXNpbmVzcy1wbGFuIElSUiBieSAqKjE1JSoqKS5cIixcbiAgICAgICAgXCIqKkxlYW4gRGlzY292ZXJ5ICYgUHJvdG90eXBpbmcg4oCUKiogQnVpbHQgYW5kIHNoaXBwZWQgYSBzdGFuZGFsb25lICoqV2l6YXJkIG9mIE96KiogcHJvdG90eXBlIGRpcmVjdGx5IHRvIHRhcmdldCB1c2VycyB3aXRob3V0IGVuZ2luZWVyaW5nIG92ZXJoZWFkOyBraWxsZWQgYSBsb3ctUk9JIHdvcmtvdXQgZmVhdHVyZSB1c2luZyBwaWxvdCB2YWxpZGF0aW9uIGRhdGEsIHNhdmluZyAqKjUgc3ByaW50cyoqIGFuZCByZWR1Y2luZyBHVE0gcmlzay5cIixcbiAgICAgICAgJyoqRGVsaXZlcnkgJiBQZXJmb3JtYW5jZSBTeXN0ZW1zIOKAlCoqIEVsaW1pbmF0ZWQga2V5LXBlcnNvbiBkZXBlbmRlbmN5IGJ5IHN0YW5kYXJkaXppbmcgd29ya2Zsb3dzLCByZWRlc2lnbmluZyBPS1JzLCBhbmQgYnVpbGRpbmcgYSB0ZWFtL2luZGl2aWR1YWwgcGVyZm9ybWFuY2UtdHJhY2tpbmcgcGFuZWwgYWxpZ25lZCB3aXRoIHByb2R1Y3Qgb3V0Y29tZXMsIGFjY2VsZXJhdGluZyBzcHJpbnQgZGVsaXZlcnkgKioyMCUgYWhlYWQgb2YgZXN0aW1hdGVzKiogd2l0aCB6ZXJvIGFkZGVkIGhlYWRjb3VudC4nLFxuICAgICAgICBcIioqRnJlZW1pdW0gRnVubmVsLCBDTFRWICYgQ0FDIE9wdGltaXphdGlvbiDigJQqKiBBcmNoaXRlY3RlZCBhIHBlcnNvbmFsaXplZCwgKipzZW5zb3ItbGVzcyBmcmVlbWl1bSBmdW5uZWwqKiB0YWlsb3JlZCB0byBkaXN0aW5jdCB1c2VyIHNlZ21lbnRzIGFuZCBwZXJzb25hczsgYWNjZWxlcmF0ZWQgdXNlciBhY3F1aXNpdGlvbiwgaW1wcm92ZWQgKiphY3RpdmF0aW9uIGFuZCBmcmVlLXRvLWhhcmR3YXJlIGNvbnZlcnNpb24qKiwgbWF4aW1pemVkICoqQ0xUVioqLCBhbmQgbG93ZXJlZCAqKkNBQyoqIGJ5IGd1aWRpbmcgZnJlZSB1c2VycyBvcmdhbmljYWxseSB0b3dhcmQgaGFyZHdhcmUgcHVyY2hhc2UgYW5kIHBhaWQgc3Vic2NyaXB0aW9ucy5cIixcbiAgICAgICAgXCIqKlNlZ21lbnRhdGlvbiwgVXNlLUNhc2UgRXhwYW5zaW9uICYgT3JnYW5pYyBHcm93dGgg4oCUKiogRXhwYW5kZWQgZGFpbHkgdXNhYmlsaXR5IGFuZCBpbXBhY3QgYnkgcmVmcmFtaW5nIHRoZSBzYW1lIHVzZXIgYmV5b25kIGJhc2ljICoqc2VsZi1jYXJlKiogaW50byAqKkhlYWx0aCBDb21wYW5pb24qKiBhbmQgKipvcmdhbml6YXRpb25hbCB3ZWxsbmVzcyoqIHNjZW5hcmlvczsgc2VwYXJhdGVkIGJ1eWVyIGFuZCBlbmQtdXNlciBwZXJzb25hcyB0byBjdXQgbG93LXZhbHVlIGNvaG9ydHMsIHdoaWxlIGJ1aWxkaW5nICoqVUdDIHNoYXJpbmcgbWVjaGFuaXNtcyoqIGFuZCAqKnBlZXItdG8tcGVlciBjb21wZXRpdGl2ZSBjaGFsbGVuZ2VzKiogdG8gZHJpdmUgb3JnYW5pYyByZWZlcnJhbHMgYW5kICoqYnJhbmQgYXdhcmVuZXNzKiouXCIsXG4gICAgICAgIFwiKipEaXNjb3ZlcnktRHJpdmVuIFByb2R1Y3QgU3Bpbi1vZmZzIOKAlCoqIElkZW50aWZpZWQgdHdvIGRpc3RpbmN0IG1hcmtldCBuZWVkcyBkdXJpbmcgcHJvZHVjdCBkaXNjb3Zlcnk7IHByZXZlbnRlZCBjb3JlLXByb2R1Y3QgZmVhdHVyZSBibG9hdCBieSBzZWN1cmluZyBtYW5hZ2VtZW50IGFwcHJvdmFsIHRvIHNwaW4gdGhlbSBvZmYgaW50byB0d28gaW5kZXBlbmRlbnQsIHBlcnNvbmEtc3BlY2lmaWMgcHJvZHVjdHMgKCoqUm9raG5hbWEqKiBhbmQgKipCaW9QYWQqKiksIHRoZW4gYnVpbHQgYm90aCBlbmQtdG8tZW5kIHdpdGggKipBSSBhcyBhIFByb2R1Y3QgQnVpbGRlcioqIHRocm91Z2ggdG8gYWN0aXZlIHVzZXIgYWNxdWlzaXRpb24gYW5kIGZ1bmRyYWlzaW5nLlwiLFxuICAgICAgXSxcbiAgICAgIHRhZ3M6IFtcIlJlYWN0XCIsIFwiUHJvZHVjdCBTdHJhdGVneVwiLCBcIlByb2R1Y3QgRGlzY292ZXJ5XCIsIFwiR1RNXCIsIFwiT0tSXCIsIFwiQWdpbGUvU2NydW1cIiwgXCJQcm90b3R5cGluZ1wiXSxcbiAgICB9LFxuICAgIHtcbiAgICAgIGlkOiBcInV4Y2VsXCIsXG4gICAgICByb2xlOiBcIlByb2R1Y3QgTWFuYWdlbWVudCBNZW50b3JcIixcbiAgICAgIGludHJvOlxuICAgICAgICBcIk1lbWJlciBvZiB0aGUgVXhjZWwgbWVudG9yaW5nIHRlYW0g4oCUIHJhbmtlZCBhbW9uZyB0aGUgKip0b3AgMTAgcHJvZHVjdCBtYW5hZ2VtZW50IG1lbnRvcnMqKiBvbiBhbiBpbnRlcmFjdGl2ZSBsZWFybmluZyBwbGF0Zm9ybSBzZXJ2aW5nICoqNTAwLDAwMCsgcHJvZmVzc2lvbmFscyBpbiAxNTArIGNvdW50cmllcyoqIChpbmNsdWRpbmcgTWljcm9zb2Z0LCBJQk0sIFNhbXN1bmcsIGFuZCBEcm9wYm94KS5cIixcbiAgICAgIGJ1bGxldHM6IFtcbiAgICAgICAgXCIqKk1lbnRvcmluZyAmIFByb2Zlc3Npb25hbCBEZXZlbG9wbWVudCDigJQqKiBDb2FjaGVkIHByb2R1Y3QgbWFuYWdlbWVudCBwcm9mZXNzaW9uYWxzIHdvcmxkd2lkZSB0aHJvdWdoIHJlZ3VsYXIgcmV2aWV3cyBvZiAqKjE3MCByZWFsIHByb2plY3RzKiogYW5kIHN0cnVjdHVyZWQgZmVlZGJhY2ssIGZvY3VzZWQgb24gZGV2ZWxvcGluZyBkZWNpc2lvbi1tYWtpbmcgYW5kIGV4ZWN1dGlvbiBza2lsbHMuXCIsXG4gICAgICAgIFwiKipDb250ZW50IFRlYW0gJiBNZW50b3IgTmV0d29yayBDb29yZGluYXRpb24g4oCUKiogQ29vcmRpbmF0ZWQgd2l0aCBVeGNlbCdzIGNvbnRlbnQgdGVhbSBhbmQgaW50ZXJuYXRpb25hbCBtZW50b3IgbmV0d29yayB0byBkZXNpZ24gYW5kIHB1Ymxpc2ggc3BlY2lhbGl6ZWQgdHJhaW5pbmcsIGVuc3VyaW5nIHF1YWxpdHkgY29uc2lzdGVuY3kgYWNyb3NzIGEgZGlzdHJpYnV0ZWQgdGVhbS5cIixcbiAgICAgIF0sXG4gICAgICB0YWdzOiBbXCJQcm9kdWN0IExlYWRlcnNoaXBcIiwgXCJNZW50b3JzaGlwXCIsIFwiVVggU3RyYXRlZ3lcIiwgXCJQcm9kdWN0IFRlYW0gVXBza2lsbGluZ1wiLCBcIkNvYWNoaW5nXCJdLFxuICAgIH0sXG4gICAge1xuICAgICAgaWQ6IFwib2ZvcVwiLFxuICAgICAgcm9sZTogXCJGcm9udGVuZCBEZXZlbG9wZXJcIixcbiAgICAgIGludHJvOlxuICAgICAgICBcIkZyb250LWVuZCBkZXZlbG9wZXIgd2l0aCBzdHJvbmcgcHJvZHVjdCBtaW5kc2V0LCBjb2xsYWJvcmF0aW5nIGNsb3NlbHkgd2l0aCAqKnByb2R1Y3QsIFNFTywgYW5kIG1hcmtldGluZyB0ZWFtcyoqIHRvIGRlbGl2ZXIgaGlnaC1wZXJmb3JtYW5jZSwgc2NhbGFibGUgd2ViIGV4cGVyaWVuY2VzIHdoaWxlIGRldmVsb3Bpbmcgc3Rha2Vob2xkZXIgZW1wYXRoeS5cIixcbiAgICAgIGJ1bGxldHM6IFtcbiAgICAgICAgXCIqKldlYnNpdGUgVXBkYXRlICYgUmVkZXNpZ24g4oCUKiogUmVidWlsdCBQTFAgYW5kIFBEUCBwYWdlcyB1c2luZyAqKkFuZ3VsYXIgMTcqKiB3aXRoICoqU1NSKiogYW5kIGltcGxlbWVudGVkICoqQm9vdHN0cmFwICsgVGFpbHdpbmQgQ1NTKiogZm9yIGEgc2NhbGFibGUgVUksIGFjaGlldmluZyBhICoqOTgrIG1vYmlsZSBMaWdodGhvdXNlIHNjb3JlKiogYW5kIGEgKioxMDAgVGVjaG5pY2FsIFNFTyBzY29yZSoqLlwiLFxuICAgICAgICBcIioqVmVudXMgUHJvamVjdCDigJQqKiBCdWlsdCBNVlBzIGZvciBlbXBsb3llZSBjaGVjay1pbi9vdXQsIGxlYXZlIG1hbmFnZW1lbnQsIGFuZCBpbnRlcm5hbCBkYXNoYm9hcmRzIHVzaW5nICoqQW5ndWxhciAxNCoqOyBvd25lZCB0aGUgZW5kLXRvLWVuZCByZWRlc2lnbiBvZiB0aGUgY3Jvc3MtcGxhdGZvcm0gZ2VvbG9jYXRpb24gZmxvdywgcmVkdWNpbmcgZmFpbGVkIGxvY2F0aW9uIGNoZWNrLWluIHJhdGVzIGJ5ICoqMjAlKiouXCIsXG4gICAgICAgIFwiKipIUiBTZXJ2aWNlcyAmIEpvYiBCb2FyZCBQYW5lbCDigJQqKiBEZXZlbG9wZWQgYW5kIGRlcGxveWVkIGEgc3RhbmRhbG9uZSBIUiBzdWJkb21haW4gZmVhdHVyaW5nIGpvYiBsaXN0aW5ncywgY3VzdG9tIGFwcGxpY2FudCBwaXBlbGluZSB0cmFja2luZywgYW5kIGludGVybmFsIEhSIGV2YWx1YXRpb24gbW9kdWxlcywgY3V0dGluZyBlbXBsb3llZSBwZXJmb3JtYW5jZSBldmFsdWF0aW9uIHRpbWUgYnkgKio2MCUqKi5cIixcbiAgICAgICAgXCIqKk1hcmtldGluZyBEYXNoYm9hcmQg4oCUKiogRGVsaXZlcmVkIHJlYWwtdGltZSBLUEksIFNFTywgYW5kIGJlaGF2aW9yIGRhc2hib2FyZHMgdXNpbmcgKipHb29nbGUgQW5hbHl0aWNzLCBDbGFyaXR5LCBhbmQgTG9va2VyIFN0dWRpbyoqLCBlbmFibGluZyBtYXJrZXRpbmcgY2hhbm5lbCBzY3JlZW5pbmcgYW5kIHRoZSBpZGVudGlmaWNhdGlvbiBhbmQgcmVtb3ZhbCBvZiAqKmZ1bm5lbCBmcmljdGlvbiBwb2ludHMqKi5cIixcbiAgICAgIF0sXG4gICAgICB0YWdzOiBbXCJBbmd1bGFyXCIsIFwiVHlwZVNjcmlwdFwiLCBcIlJ4SnNcIiwgXCJTYXNzXCIsIFwiQW5ndWxhciBNYXRlcmlhbFwiLCBcIkJvb3RzdHJhcFwiLCBcIlVJL1VYXCIsIFwiT09QXCJdLFxuICAgIH0sXG4gIF0sXG4gIHByb2plY3RzOiBbXG4gICAge1xuICAgICAgaWQ6IFwicm9raG5hbWFcIixcbiAgICAgIHRpdGxlOiBcIlJva2huYW1hIOKAlCBGb3VuZGVyICYgUHJvZHVjdCBCdWlsZGVyXCIsXG4gICAgICBkZXNjcmlwdGlvbjpcbiAgICAgICAgXCJCdWlsdCBhIGxpZ2h0d2VpZ2h0ICoqZGlnaXRhbCBzdG9yZWZyb250ICYgd2ViIGNhdGFsb2cgZW5naW5lKiogcmVwbGFjaW5nIHN0YXRpYyBQREZzIHdpdGggbW9iaWxlLWZpcnN0IGludGVyYWN0aXZlIHNob3djYXNlcywgaW5jbHVkaW5nIGEgbGl2ZSBwb3J0YWwgZm9yICoqSy4gTi4gVG9vc2kgVW5pdmVyc2l0eSBvZiBUZWNobm9sb2d5IChJbnRlcm5hdGlvbmFsIFN0dWRlbnQgQWZmYWlycykqKi5cIixcbiAgICB9LFxuICAgIHtcbiAgICAgIGlkOiBcImJpb3BhZFwiLFxuICAgICAgdGl0bGU6IFwiQmlvUGFkIOKAlCBGb3VuZGVyICYgUHJvZHVjdCBCdWlsZGVyXCIsXG4gICAgICBkZXNjcmlwdGlvbjpcbiAgICAgICAgXCJBcmNoaXRlY3RlZCBhbiBpbmRlcGVuZGVudCAqKm11bHRpLXdlYXJhYmxlIGJvZHlidWlsZGluZyAmIGRpZ2l0YWwgaGVhbHRoIHByb2R1Y3QqKiAoQmV0YSkgY29udmVydGluZyByYXcgYmlvbWV0cmljIHRlbGVtZXRyeSBpbnRvIGFjdGlvbmFibGUgd29ya291dCBhbmQgcmVjb3ZlcnkgaW5zaWdodHMsIGZlYXR1cmluZyAqKjNEIGludGVyYWN0aXZlIG1hc2NvdHMqKiBhbmQgQUktYXNzaXN0ZWQgZmVlZGJhY2sgbG9vcHMuXCIsXG4gICAgfSxcbiAgICB7XG4gICAgICBpZDogXCJtaW5pLWFwcC1ib3RcIixcbiAgICAgIHRpdGxlOiBcIk1pbmktQXBwICYgTWVzc2FnaW5nIEJvdCBEZXZlbG9wbWVudFwiLFxuICAgICAgZGVzY3JpcHRpb246XG4gICAgICAgIFwiTGF1bmNoZWQgYSBuYXRpdmUgbWluaS1hcHAgYW5kIGJvdCBhY3Jvc3MgKip0aHJlZSBkb21lc3RpYyBtZXNzYWdpbmcgcGxhdGZvcm1zKiogKFRlbGVncmFtLCBCYWxlLCBSdWJpa2EpIHdpdGggYW4gKipBSSByZXBvcnRpbmcgJiBjb2FjaGluZyBhc3Npc3RhbnQqKiBhbmQgVUdDIHNoYXJpbmcgbWVjaGFuaXNtczsgYm9vc3RlZCBicmFuZCBhd2FyZW5lc3MsIGRyb3ZlIG9yZ2FuaWMgYWNxdWlzaXRpb24gb2Ygbm9uLWhhcmR3YXJlIHVzZXJzLCBhbmQgKipsb3dlcmVkIENBQyoqLlwiLFxuICAgIH0sXG4gICAge1xuICAgICAgaWQ6IFwiZGVzaWduLXN5c3RlbS1kZWxiYW5kXCIsXG4gICAgICB0aXRsZTogXCJEZXNpZ24gU3lzdGVtICYgRGVsYmFuZCBBcHAgUmVkZXNpZ25cIixcbiAgICAgIGRlc2NyaXB0aW9uOlxuICAgICAgICBcIkJ1aWx0IERlbGJhbmQncyAqKmRlc2lnbiBzeXN0ZW0qKiBhbmQgcmVkZXNpZ25lZCB0aGUgbW9iaWxlIGFwcCB3aXRoICoqVXhjZWwgYW5kIGN1c3RvbSBBSSBhZ2VudHMqKiDigJQgc2F2aW5nICoqdGhyZWUgbW9udGhzKiogb2YgdGhlIHByb2R1Y3Qgcm9hZG1hcCBhbmQgY3V0dGluZyBkZXNpZ24gY29zdHMgYnkgKio2MCUqKi5cIixcbiAgICB9LFxuICAgIHtcbiAgICAgIGlkOiBcImluZG9yYVwiLFxuICAgICAgdGl0bGU6IFwiSW5kb3JhIOKAlCBMb2NhdGlvbiBJbnRlbGxpZ2VuY2VcIixcbiAgICAgIGRlc2NyaXB0aW9uOlxuICAgICAgICBcIlNoaXBwZWQgbG9jYXRpb24taW50ZWxsaWdlbmNlIHBsYXRmb3JtIGRyaXZpbmcgZGF0YSBkZWNpc2lvbnMuIEF1dGhvcmVkIFBSRHMsIG1hcHBlZCB1c2VyIGpvdXJuZXlzLCBhbmQgZXhlY3V0ZWQgaW5pdGlhbCBHVE0gc3RyYXRlZ2llcyB0byBvcGVyYXRpb25hbGl6ZSByYXcgbG9jYXRpb24gZGF0YS5cIixcbiAgICB9LFxuICAgIHtcbiAgICAgIGlkOiBcInN0YWtlaG9sZGVyLXBvcnRhbFwiLFxuICAgICAgdGl0bGU6IFwiU3Rha2Vob2xkZXIgUG9ydGFsXCIsXG4gICAgICBkZXNjcmlwdGlvbjpcbiAgICAgICAgXCJEZXZlbG9wZWQgd2ViIG1hbmFnZW1lbnQgZGFzaGJvYXJkIGludGVncmF0aW5nICoqR2FudHQgc2NoZWR1bGluZywgdGFzayBib2FyZHMsIGFuZCBPS1IgdHJhY2tpbmcqKiwgY2VudHJhbGl6aW5nIHByb2dyZXNzIHRvIHByb3ZpZGUgdHJhbnNwYXJlbmN5IGZvciBsZWFkZXJzaGlwLlwiLFxuICAgIH0sXG4gICAge1xuICAgICAgaWQ6IFwiZWxkZXJjYXJlXCIsXG4gICAgICB0aXRsZTogXCJFbGRlcmNhcmUgQ29vcmRpbmF0aW9uIFByb2dyYW1cIixcbiAgICAgIGRlc2NyaXB0aW9uOlxuICAgICAgICAnTGVkIGludGVyZGlzY2lwbGluYXJ5IGNsaW5pY2FsIHRlYW0gdGhyb3VnaCBhZ2lsZSBkaXNjb3ZlcnkuIERlZmluZWQgXCJ0cnVzdGVkIGNhcmVnaXZlclwiIGNyaXRlcmlhIGFuZCBjYXBwZWQgc2NvcGUgdG8gYSBsaXZlIGRpZ2l0YWwgcGlsb3QsIHByaW9yaXRpemluZyByZWFkbWlzc2lvbiByZWR1Y3Rpb24uJyxcbiAgICB9LFxuICAgIHtcbiAgICAgIGlkOiBcIm1lbnRvcnNoaXAtcGxhdGZvcm1cIixcbiAgICAgIHRpdGxlOiBcIk1lbnRvcnNoaXAgU2VydmljZXMgUGxhdGZvcm1cIixcbiAgICAgIGRlc2NyaXB0aW9uOlxuICAgICAgICBcIkRpcmVjdGVkIGVuZC10by1lbmQgcHJvZHVjdCBkaXNjb3ZlcnkgZm9yIGEgbWVudG9yc2hpcCBwbGF0Zm9ybS4gRGVmaW5lZCBwZXJzb25hLWRyaXZlbiB3b3JrZmxvd3MgYW5kIHByaW9yaXRpemVkIGhpZ2gtdmFsdWUgbW9kdWxlcyAoc2Vzc2lvbiBtYW5hZ2VtZW50LCBtZXNzYWdpbmcpIHRocm91Z2gg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

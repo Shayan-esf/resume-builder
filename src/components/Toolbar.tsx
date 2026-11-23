@@ -364,12 +364,13 @@ export default function Toolbar({
           <div className="relative inline-flex items-stretch h-9 rounded-lg shadow-xs shrink-0">
             <button
               type="button"
-              onClick={onPrint}
-              className="flex items-center gap-1.5 px-3.5 rounded-l-lg bg-sky-600 hover:bg-sky-700 text-white text-xs font-semibold transition-colors whitespace-nowrap shrink-0 cursor-pointer"
-              title="ذخیره PDF وکتور با متن ۱۰۰٪ واقعی و قابل جستجو (Ctrl+P)"
+              disabled={isDownloadingPdf}
+              onClick={() => (onDownloadPdf ? onDownloadPdf(false) : onPrint())}
+              className="flex items-center gap-1.5 px-3.5 rounded-l-lg bg-sky-600 hover:bg-sky-700 text-white text-xs font-semibold transition-colors whitespace-nowrap shrink-0 cursor-pointer disabled:opacity-60"
+              title="دانلود PDF با لایه متن واقعی (قابل انتخاب، جستجو و خوانا برای ATS) — بدون وابستگی به پرینتر ویندوز"
             >
-              <Printer className="size-3.5 shrink-0" />
-              <span>خروجی PDF</span>
+              <FileDown className="size-3.5 shrink-0" />
+              <span>{isDownloadingPdf ? "در حال ساخت PDF…" : "خروجی PDF"}</span>
             </button>
             <button
               type="button"
@@ -401,8 +402,10 @@ export default function Toolbar({
                   >
                     <Printer className="size-4 text-sky-600 mt-0.5 shrink-0" />
                     <div>
-                      <div className="text-xs font-semibold text-slate-900">PDF متنی برداری (پیشنهادی)</div>
-                      <div className="text-[10px] text-slate-500">بالاترین سازگاری ATS و وضوح بی‌نهایت</div>
+                      <div className="text-xs font-semibold text-slate-900">پرینت مرورگر (PDF متنی برداری)</div>
+                      <div className="text-[10px] text-slate-500">
+                        وابسته به درایور پرینتر — اگر Foxit/پرینتر مجازی داری، متن به منحنی تبدیل می‌شود
+                      </div>
                     </div>
                   </button>
 

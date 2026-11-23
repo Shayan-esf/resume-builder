@@ -72,7 +72,7 @@ export const DEFAULT_RESUME_DATA: ResumeData = {
   },
   contact: {
     email: "esfahanizadeh81@gmail.com",
-    phone: "+98 933 300 7274",
+    phone: "+989333007274",
     linkedin: {
       handle: "@shayan-esf",
       url: "https://www.linkedin.com/in/shayan-esf/",

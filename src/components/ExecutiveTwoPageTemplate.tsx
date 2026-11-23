@@ -100,10 +100,9 @@ export default function ExecutiveTwoPageTemplate() {
         #page-1 .p1-work ul { line-height: 1.2 !important; }
         #page-1 .p1-work ul > li + li { margin-top: 0 !important; }
         #page-1 .p1-work .tpl-skill-tags { margin-top: 8px !important; }
-        /* Guard: keep the role title and the company line from ever colliding when
-           the print/export pipeline re-metrics the text with fallback fonts */
-        #page-1 .p1-work h3 { line-height: 1.35 !important; }
-        #page-1 .p1-work h3 + div { margin-top: 3px !important; line-height: 1.3 !important; }
+        /* Role title + company line: no extra margin, leading comes from each
+           role's own utility so the block can match its logo height exactly. */
+        #page-1 .p1-work h3 + div { margin-top: 0 !important; }
         #page-1 .space-y-1 > * + * { margin-top: 1px !important; }
         #page-1 section > div:first-child { margin-top: 3px !important; margin-bottom: 1px !important; }
         ${!showLogos ? `.executive-template .tpl-company-logo { display: none !important; }` : ""}
@@ -168,9 +167,13 @@ export default function ExecutiveTwoPageTemplate() {
                   : "justify-center"
               }`}
             >
-              <a href={`tel:${(data.contact?.phone || "+98 933 300 7274").replace(/\s+/g, "")}`} className="hover:text-sky-700 inline-flex items-center gap-1.5 transition font-medium">
-                <Phone className="size-2.5 text-sky-600" /> {data.contact?.phone || "(+98) 933 300 7274"}
-              </a>
+ <a
+  href="tel:+989333007274"
+  className="hover:text-sky-700 inline-flex items-center gap-1.5 transition font-medium"
+>
+  <Phone className="size-2.5 text-sky-600" />
+  <span dir="ltr">+989333007274</span>
+</a>
               <span className="text-slate-300">&bull;</span>
               <a href={`mailto:${data.contact?.email || "esfahanizadeh81@gmail.com"}`} className="hover:text-sky-700 inline-flex items-center gap-1.5 transition font-medium">
                 <Mail className="size-2.5 text-sky-600" /> {data.contact?.email || "esfahanizadeh81@gmail.com"}
@@ -269,14 +272,14 @@ export default function ExecutiveTwoPageTemplate() {
 
             {/* ROLE 1: TUMS Health Innoversity */}
             <article className="mb-5">
-              <div className="flex items-start justify-between gap-2 mb-1 pt-1.5">
+              <div className="flex items-start justify-between gap-2 mb-1 pt-1.5 pb-1">
                 <div className="flex items-center gap-2.5 min-w-0 flex-1">
                   <TUMSLogo className="tpl-company-logo h-8 w-8 object-contain shrink-0" />
-                  <div className="flex flex-col justify-center min-w-0">
-                    <h3 className="text-[9.2pt] font-bold text-slate-900 leading-snug font-['Outfit',sans-serif]">
+                  <div className="flex h-8 flex-col justify-between min-w-0">
+                    <h3 className="text-[9.2pt] font-bold text-slate-900 leading-[1.2] font-['Outfit',sans-serif]">
                       {tumsExp ? tumsExp.role : "Technology & Product Advisor | Mentor Bootcamp"}
                     </h3>
-                    <div className="text-[8.2pt] font-semibold text-slate-700 leading-tight mt-0.5 font-['Plus_Jakarta_Sans',sans-serif]">
+                    <div className="text-[8.2pt] font-semibold text-slate-700 leading-[1.2] mt-0 font-['Plus_Jakarta_Sans',sans-serif]">
                       TUMS Health Innoversity
                     </div>
                   </div>
@@ -313,15 +316,15 @@ export default function ExecutiveTwoPageTemplate() {
 
             {/* ROLE 2: Hamrahe Aval (MCI) */}
             <article className="mb-4">
-              <div className="flex items-center justify-between gap-2 mb-1 pt-1.5">
+              <div className="flex items-center justify-between gap-2 mb-1 pt-1.5 pb-1">
                 <div className="flex items-center gap-2.5">
                   <MCILogo className="tpl-company-logo h-7 w-auto shrink-0" />
-                  <div className="flex flex-col justify-center">
-                    <h3 className="text-[9.4pt] font-bold text-slate-900 leading-tight font-['Outfit',sans-serif]">
+                  <div className="flex h-7 flex-col justify-between">
+                    <h3 className="text-[9.4pt] font-bold text-slate-900 leading-[1.2] font-['Outfit',sans-serif]">
                       {mciExp ? mciExp.role : "Technical Product Manager"}
                     </h3>
-                    <div className="text-[8.2pt] font-semibold text-slate-700 leading-tight mt-0.5 font-['Plus_Jakarta_Sans',sans-serif]">
-                      <a href="https://delbandcare.com" target="_blank" rel="noopener noreferrer" className="text-slate-800 hover:text-sky-700 transition inline-flex items-center gap-1 font-bold">
+                    <div className="text-[8.2pt] font-semibold text-slate-700 leading-[1.2] mt-0 font-['Plus_Jakarta_Sans',sans-serif]">
+                      <a href="https://delbandcare.com" target="_blank" rel="noopener noreferrer" className="text-slate-800 hover:text-sky-700 transition inline-flex items-center gap-1 font-bold leading-none">
                         Hamrahe Aval (MCI)
                         <ExternalLink className="size-2.5 text-sky-600" />
                       </a>
@@ -357,15 +360,15 @@ export default function ExecutiveTwoPageTemplate() {
 
             {/* ROLE 3: Ofogh Dadeha Iranian */}
             <article className="mb-0">
-              <div className="flex items-center justify-between gap-2 mb-1 pt-1.5">
+              <div className="flex items-center justify-between gap-2 mb-1 pt-1.5 pb-1">
                 <div className="flex items-center gap-2.5">
                   <OfoqDadeLogo className="tpl-company-logo h-6 w-auto shrink-0" />
-                  <div className="flex flex-col justify-center">
-                    <h3 className="text-[9.2pt] font-bold text-slate-900 leading-tight font-['Outfit',sans-serif]">
+                  <div className="flex h-6 flex-col justify-between">
+                    <h3 className="text-[9.2pt] font-bold text-slate-900 leading-[1.06] font-['Outfit',sans-serif]">
                       {ofoqExp ? ofoqExp.role : "Frontend Developer"}
                     </h3>
-                    <div className="text-[7.9pt] font-semibold text-slate-700 leading-tight mt-0.5 font-['Plus_Jakarta_Sans',sans-serif]">
-                      <a href="https://cafebazaar.ir/app/com.ofoghdadeha.venus" target="_blank" rel="noopener noreferrer" className="text-slate-800 hover:text-sky-700 transition inline-flex items-center gap-1 font-bold">
+                    <div className="text-[7.9pt] font-semibold text-slate-700 leading-[1.04] mt-0 font-['Plus_Jakarta_Sans',sans-serif]">
+                      <a href="https://cafebazaar.ir/app/com.ofoghdadeha.venus" target="_blank" rel="noopener noreferrer" className="text-slate-800 hover:text-sky-700 transition inline-flex items-center gap-1 font-bold leading-none">
                         Ofogh Dadeha Iranian
                         <ExternalLink className="size-2.5 text-sky-600" />
                       </a>
