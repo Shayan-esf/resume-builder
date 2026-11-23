@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix ATS Resume Builder \u0026 PDF Exporter",
+  "description": "ATS-friendly resume viewer with direct vector PDF export, selectable and searchable text, and print optimization for Shayan Esfahanizadeh.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

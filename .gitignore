@@ -1,0 +1,12 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Archive store: personal resume data, kept on disk and out of Git
+# (back it up with GET /api/archives/export?withVersions=1)
+data/

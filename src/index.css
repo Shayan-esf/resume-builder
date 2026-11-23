@@ -1,0 +1,290 @@
+@import "tailwindcss";
+
+/* ── Poppins ─────────────────────────────────────────── */
+@font-face {
+  font-family: "Poppins:Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url("https://static.figma.com/font/Poppins-Medium_6") format("woff2"),
+       local("Poppins Medium"),
+       local("Poppins-Medium");
+}
+@font-face {
+  font-family: "Poppins:SemiBold";
+  font-style: normal;
+  font-weight: 600;
+  src: url("https://static.figma.com/font/Poppins-SemiBold_6") format("woff2"),
+       local("Poppins SemiBold"),
+       local("Poppins-SemiBold");
+}
+
+/* ── DM Sans (variable – covers weights 200–800) ─────── */
+@font-face {
+  font-family: "DM Sans:ExtraLight";
+  font-style: normal;
+  font-weight: 200;
+  src: url("https://static.figma.com/font/DMSans_opsz_wght__1") format("woff2"),
+       local("DM Sans");
+}
+@font-face {
+  font-family: "DM Sans:Light";
+  font-style: normal;
+  font-weight: 300;
+  src: url("https://static.figma.com/font/DMSans_opsz_wght__1") format("woff2"),
+       local("DM Sans");
+}
+@font-face {
+  font-family: "DM Sans:Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://static.figma.com/font/DMSans_opsz_wght__1") format("woff2"),
+       local("DM Sans");
+}
+@font-face {
+  font-family: "DM Sans:Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url("https://static.figma.com/font/DMSans_opsz_wght__1") format("woff2"),
+       local("DM Sans Medium"),
+       local("DM Sans");
+}
+@font-face {
+  font-family: "DM Sans:SemiBold";
+  font-style: normal;
+  font-weight: 600;
+  src: url("https://static.figma.com/font/DMSans_opsz_wght__1") format("woff2"),
+       local("DM Sans SemiBold"),
+       local("DM Sans");
+}
+@font-face {
+  font-family: "DM Sans:Bold";
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://static.figma.com/font/DMSans_opsz_wght__1") format("woff2"),
+       local("DM Sans Bold"),
+       local("DM Sans");
+}
+@font-face {
+  font-family: "DM Sans:ExtraBold";
+  font-style: normal;
+  font-weight: 800;
+  src: url("https://static.figma.com/font/DMSans_opsz_wght__1") format("woff2"),
+       local("DM Sans ExtraBold"),
+       local("DM Sans");
+}
+
+/* ── Outfit ──────────────────────────────────────────── */
+@font-face {
+  font-family: "Outfit:Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url("https://static.figma.com/font/Outfit_wght__2") format("woff2"),
+       local("Outfit Medium"),
+       local("Outfit");
+}
+
+/* ── Plus Jakarta Sans (variable) ────────────────────── */
+@font-face {
+  font-family: "Plus Jakarta Sans:Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://static.figma.com/font/PlusJakartaSans_wght__2") format("woff2"),
+       local("Plus Jakarta Sans");
+}
+@font-face {
+  font-family: "Plus Jakarta Sans:SemiBold";
+  font-style: normal;
+  font-weight: 600;
+  src: url("https://static.figma.com/font/PlusJakartaSans_wght__2") format("woff2"),
+       local("Plus Jakarta Sans SemiBold"),
+       local("Plus Jakarta Sans");
+}
+
+/* Base resets & selection */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #0585c02b;
+  color: #0f172a;
+}
+
+/* Search highlight styling */
+mark.ats-highlight {
+  background-color: #fef08a !important;
+  color: #854d0e !important;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+/* Subtle screen-only hover cue for double-click inline text editing */
+@media screen {
+  .clone-dblclick-editable p:hover,
+  .clone-dblclick-editable li:hover,
+  .clone-dblclick-editable h1:hover,
+  .clone-dblclick-editable h3:hover {
+    outline: 1.5px dashed rgba(2, 132, 199, 0.35);
+    outline-offset: 2px;
+    border-radius: 3px;
+    cursor: text;
+  }
+}
+
+/* ── Precision ATS Print CSS ─────────────────────────── */
+@media print {
+  /* Never let the print/PDF pipeline synthesize fake bold/italic: a missing face would
+     otherwise thicken only the affected glyphs (e.g. a lone capital “I”). */
+  .executive-template,
+  .classic-ats-sheet,
+  .a4-sheet,
+  #resume-content {
+    font-synthesis: none !important;
+  }
+  @page {
+    size: A4 portrait;
+    margin: 0mm;
+  }
+
+  html, body {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Hide all interactive UI and non-printable wrappers */
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    display: block !important;
+  }
+
+  /* Ensure the printable container matches A4 width without extra margins */
+  .printable-area {
+    width: 100% !important;
+    max-width: 210mm !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+
+  .executive-template {
+    display: block !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .a4-sheet {
+    margin: 0 auto !important;
+    padding: 10mm 12.5mm !important;
+    box-shadow: none !important;
+    border: none !important;
+    height: 296.5mm !important;
+    min-height: 296.5mm !important;
+    max-height: 296.5mm !important;
+    width: 210mm !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    background: #ffffff !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .a4-sheet:last-of-type,
+  #page-2 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  .minimal-template {
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    height: 296.5mm !important;
+    min-height: 296.5mm !important;
+    max-height: 296.5mm !important;
+    width: 210mm !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    box-sizing: border-box !important;
+    background: #ffffff !important;
+    overflow: hidden !important;
+  }
+
+  .custom-html-template {
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    width: 210mm !important;
+    min-height: 296.5mm !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+  }
+
+  #resume-content {
+    transform: none !important;
+    left: 0 !important;
+    top: 0 !important;
+  }
+
+  #resume-content.figma-scaled {
+    zoom: 1.3367 !important;
+    transform: none !important;
+    transform-origin: top left !important;
+  }
+
+  #resume-content.figma-scaled > div,
+  #resume-content.figma-scaled > div > div {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  /* Fix for text-[transparent] gradient in print mode so ATS and printers render crisp text */
+  .bg-clip-text {
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: #0585c0 !important;
+    color: #0585c0 !important;
+    background-image: none !important;
+  }
+
+  /* Remove search highlights in print so printout is clean */
+  mark.ats-highlight {
+    background-color: transparent !important;
+    color: inherit !important;
+    padding: 0 !important;
+  }
+
+  /* Ensure all text retains selectable vector fidelity */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
